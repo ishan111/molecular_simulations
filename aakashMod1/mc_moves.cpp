@@ -23,6 +23,7 @@ void hard_displace(){
 }
 
 void hard_exchange(){
+    bool bias ;
     if(ranf() > 0.5){ //insert
     	inc = true ;
         att_ins += 1;
@@ -33,11 +34,14 @@ void hard_exchange(){
 
         if(e_new == 0){
             double arg = (pow(L,3) * zz)/(N+1);
+            double biasedArg ;
+            bias = tmmc_bias(inc);
             tmmc_update(arg,inc,true);
-            if(ranf() >= arg){
+            biasedArg = bias*arg ;
+            if(ranf() >= biasedArg){
                 cout << "Rejected by rule: " << ranf() << " " << arg << endl;
             }
-            if(ranf() < arg) { //acceptance condition
+            if(ranf() < biasedArg) { //acceptance condition
                 particles.push_back(newp); N+=1;
                 cell_list_insert(newp);
 
@@ -49,13 +53,16 @@ void hard_exchange(){
         
     }
     else{ //remove
+        double biasedArg;
+        double bias ;
         att_del += 1;
         if(N==0) return;
-
+        bias = tmmc_bias(inc);
         double arg = N/(pow(L,3) * zz);
+        biasedArg = bias * arg ;
         tmmc_update(arg,inc,true);
 
-        if(ranf() < arg){ //acceptance condition
+        if(ranf() < biasedArg){ //acceptance condition
             int p = int(ranf() * N); 
             cell_list_remove(particles[p]);
             particles.erase(particles.begin() + p); N-=1;
