@@ -38,9 +38,13 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 	}
 }
 double tmmc_bias(bool inc){
+	double bias;
 	if(inc){
+		bias = tmmcN[N][0]==0? tmmcN[N+1][2]/tmmcN[N][0]:1;
 		
 	}
 	else{
+		bias = tmmcN[N][2]? tmmcN[N-1][0]/tmmcN[N][2]:1;
 	}
+	return bias ;
 }
