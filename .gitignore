@@ -11,8 +11,3 @@
 *.la
 *.a
 *.lib
-*.out
-*.in
-*.out
-*.config
-*.hist
