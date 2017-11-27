@@ -10,6 +10,6 @@
 
 void tmmc_update(double,bool,bool);
 
-
+double tmmc_bias(bool);
 
 #endif /* TMMC_H_ */
