@@ -64,7 +64,7 @@ double tmmc_bias(bool inc){
 void tmmc_hist(){
   tmmcHist_data.open("tmmc.dat");
 	for(int i=0;i<Nmax;i+=1){
-		if (tmmcN[i][0]!=0 || tmmcN[i+1][2]!=0){
+		if (tmmcN[i][0]!=0 & tmmcN[i+1][2]!=0){
 			tmmcHist.push_back({tmmcN[i+1][2]/tmmcN[i][0]});
 		}
 		else{
@@ -75,6 +75,7 @@ void tmmc_hist(){
 			tmmcHist[i]=tmmcHist[i]*tmmcHist[i-1];
 		}
 		tmmcHist_data<<tmmcHist[i]<<endl;
+		tmmcHist_data<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
 
 	}
 	tmmcHist_data.close();
