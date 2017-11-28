@@ -6,6 +6,7 @@
 #include "mc_moves.h"
 #include "interaction.h"
 #include "sampling.h"
+#include "tmmc.h"
 
 using namespace std;
 

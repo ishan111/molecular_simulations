@@ -15,4 +15,5 @@ void gcmc(){
             sample_rdf(L/rmax_factor, L/dr_factor);
         }
     }
+    tmmc_hist();
 }

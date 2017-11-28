@@ -4,13 +4,13 @@
 int potential_type = 0;
 
 //For random number generation
-random_device rd; 
-mt19937 gen(rd()); 
-uniform_real_distribution<> zero_one(0,nextafter(1, std::numeric_limits<double>::max())); 
+random_device rd;
+mt19937 gen(rd());
+uniform_real_distribution<> zero_one(0,nextafter(1, std::numeric_limits<double>::max()));
 
 double ranf(){
     return zero_one(gen);
-}    
+}
 
 //Common simulation parameters
 double sigma = 0;
@@ -38,7 +38,7 @@ vector<vector<double> > particles;
 double start;
 
 //Statistics
-int att_disp; 
+int att_disp;
 int att_ins;
 int att_del;
 int succ_disp;
@@ -67,7 +67,6 @@ bool tmmcBias = true;
 double bias = 1;
 bool startTmmcBias = false;
 bool inc = false ;
-
+vector<double> tmmcHist = {1};
 //Loop counter
 int sampleNo=0;
-
