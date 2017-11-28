@@ -68,5 +68,6 @@ double bias = 1;
 bool startTmmcBias = false;
 bool inc = false ;
 vector<double> tmmcHist = {1};
+int biasStart = 30000;
 //Loop counter
 int sampleNo=0;
