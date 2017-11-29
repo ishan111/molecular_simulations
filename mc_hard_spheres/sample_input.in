@@ -9,7 +9,7 @@ cell list divisions per dimension (cell_list_div) [must be a divisor of the box 
 periodic boundary conditions (0 = false, 1 = true)
     1
 number of cycles (ncycles)
- 1000000
+ 100000
 sampling interval (samp_ival)
     50000
 activity (zz = exp(beta*mu)/lambda^3)

@@ -64,8 +64,8 @@ double bias = 1;
 bool inc = false ;
 vector<double> tmmcHist = {1};
 
-int tmmcCupstart = 10000;
-int tmmcNupstart=20000;
+int tmmcCupstart = 15000;
+int tmmcNupstart=29000;
 int tmmcBiasStart=30000;
 bool tmmcBias = true;
 bool tmmcSamp = true;

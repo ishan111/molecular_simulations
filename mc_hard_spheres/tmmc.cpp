@@ -22,13 +22,18 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 			tmmcC.push_back({0,0,0});
 			tmmcN.push_back({0,0,0});
 		}
+		if (sampleNo> tmmcCupstart){
 		accProb = accProb<1?accProb:1;
 		tmmcC[N][0] = tmmcC[N][0] + accProb ;
 		tmmcC[N][1] = tmmcC[N][1] + 1 - accProb ;
+		}
 	}
 	else {
+		if (sampleNo>tmmcCupstart){
+		accProb = accProb<1?accProb:1;
 		tmmcC[N][2] = tmmcC[N][2] + accProb ;
 		tmmcC[N][1] = tmmcC[N][1] + 1 - accProb ;
+		}
 	}
 	if (sampleNo>tmmcNupstart){
          for (int i=0;i<=Nmax;i+=1){
