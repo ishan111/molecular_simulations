@@ -5,15 +5,15 @@
  *      Author: ishan
  */
 #include "tmmc.h"
-#include "common_params.h"
-#include <iostream>
-#include <vector>
+
 
 using std::vector;
 using namespace std;
 
 
 ofstream tmmcHist_data;
+ofstream tmmcHist_dataC;
+ofstream tmmcHist_dataN;
 
 void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 	if (inc){
@@ -22,6 +22,7 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 			tmmcC.push_back({0,0,0});
 			tmmcN.push_back({0,0,0});
 		}
+		accProb = accProb<1?accProb:1;
 		tmmcC[N][0] = tmmcC[N][0] + accProb ;
 		tmmcC[N][1] = tmmcC[N][1] + 1 - accProb ;
 	}
@@ -29,7 +30,7 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 		tmmcC[N][2] = tmmcC[N][2] + accProb ;
 		tmmcC[N][1] = tmmcC[N][1] + 1 - accProb ;
 	}
-	if (sampleNo>tmmcNupstart & sampleNo%1000==0){
+	if (sampleNo>tmmcNupstart){
          for (int i=0;i<=Nmax;i+=1){
         	 tmmcRsum = tmmcC[i][0]+tmmcC[i][1]+tmmcC[i][2];
 					 if (tmmcRsum!=0){
@@ -64,20 +65,26 @@ double tmmc_bias(bool inc){
 
 void tmmc_hist(){
   tmmcHist_data.open("tmmc.dat");
+	tmmcHist_dataC.open("tmmcC.dat");
+	tmmcHist_dataN.open("tmmcN.dat");
+
 	for(int i=0;i<Nmax;i+=1){
 		if (tmmcN[i][0]!=0 & tmmcN[i+1][2]!=0){
-			tmmcHist.push_back({tmmcN[i+1][2]/tmmcN[i][0]});
+			tmmcHist.push_back({log(tmmcN[i][0]!=0?tmmcN[i][0]:1)-log(tmmcN[i+1][2]!=0?tmmcN[i+1][2]:1)});
 		}
 		else{
 			tmmcHist.push_back({1});
 		}
 
 		if(i>0){
-			tmmcHist[i]=tmmcHist[i]*tmmcHist[i-1];
+			tmmcHist[i]=tmmcHist[i]+tmmcHist[i-1];
 		}
 		tmmcHist_data<<tmmcHist[i]<<endl;
-		//tmmcHist_data<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
+		tmmcHist_dataN<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
+		tmmcHist_dataC<<tmmcC[i][0]<<" "<<tmmcC[i][1]<<" "<<tmmcC[i][2]<<endl;
 
 	}
 	tmmcHist_data.close();
+	tmmcHist_dataN.close();
+	tmmcHist_dataC.close();
 }

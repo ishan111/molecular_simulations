@@ -43,13 +43,13 @@ void hard_exchange(){
               bias = 1;
             }
             if(tmmcSamp==true){
-              tmmc_update(arg,inc,true);  
+              tmmc_update(arg,inc,true);
             }
 
             biasedArg = bias*arg ;
-            if(ranf() >= biasedArg){
+          /*  if(ranf() >= biasedArg){
                 cout << "Rejected by rule: " << ranf() << " " << arg << endl;
-            }
+            }*/
             if(ranf() < biasedArg) { //acceptance condition
                 particles.push_back(newp); N+=1;
                 cell_list_insert(newp);

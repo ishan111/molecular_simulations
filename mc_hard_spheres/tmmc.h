@@ -9,6 +9,10 @@
 #define TMMC_H_
 
 #include <fstream>
+#include "common_params.h"
+#include <iostream>
+#include <vector>
+//#include <math>
 void tmmc_update(double,bool,bool);
 
 double tmmc_bias(bool);
