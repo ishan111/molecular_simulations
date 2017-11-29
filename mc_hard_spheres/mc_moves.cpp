@@ -36,13 +36,16 @@ void hard_exchange(){
             double arg = (pow(L,3) * zz)/(N+1);
             double biasedArg ;
             double bias = 1 ;
-          if (tmmcBias == true & sampleNo>biasStart){
+          if (tmmcBias == true & sampleNo>tmmcBiasStart){
               bias = tmmc_bias(inc);
             }
             else{
               bias = 1;
             }
-            tmmc_update(arg,inc,true);
+            if(tmmcSamp==true){
+              tmmc_update(arg,inc,true);  
+            }
+
             biasedArg = bias*arg ;
             if(ranf() >= biasedArg){
                 cout << "Rejected by rule: " << ranf() << " " << arg << endl;
@@ -63,7 +66,7 @@ void hard_exchange(){
         double bias = 1;
         att_del += 1;
         if(N==0) return;
-       if (tmmcBias == true & sampleNo>biasStart){
+       if (tmmcSamp==true & tmmcBias == true & sampleNo>tmmcBiasStart){
           bias = tmmc_bias(inc);
         }
         else{
@@ -71,7 +74,10 @@ void hard_exchange(){
         }
         double arg = N/(pow(L,3) * zz);
         biasedArg = bias * arg ;
-        tmmc_update(arg,inc,true);
+        if (tmmcSamp==true){
+          tmmc_update(arg,inc,true);
+        }
+
 
         if(ranf() < biasedArg){ //acceptance condition
             int p = int(ranf() * N);

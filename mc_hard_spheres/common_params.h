@@ -64,8 +64,12 @@ extern vector<double> tmmcHist;
 extern int Nmax;
 extern double tmmcRsum ;
 extern bool inc ;
-extern int biasStart;
+
+extern int tmmcCupstart;
+extern int tmmcNupstart;
+extern int tmmcBiasStart;
 extern bool tmmcBias;
+extern bool tmmcSamp;
 
 
 extern int sampleNo;

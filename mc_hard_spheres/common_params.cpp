@@ -60,14 +60,17 @@ vector<vector<double>> tmmcC={{0,0,0}};
 vector<vector<double>> tmmcN={{0,0,0}};
 int Nmax=0;
 double tmmcRsum = 0 ;
-bool usesTmmc = true ;
-bool updateTmmcN= true ;
-bool startTmmc = false ;
-bool tmmcBias = true;
 double bias = 1;
-bool startTmmcBias = false;
 bool inc = false ;
 vector<double> tmmcHist = {1};
-int biasStart = 30000;
+
+int tmmcCupstart = 10000;
+int tmmcNupstart=20000;
+int tmmcBiasStart=30000;
+bool tmmcBias = true;
+bool tmmcSamp = true;
+
+
+int biasStart;
 //Loop counter
 int sampleNo=0;

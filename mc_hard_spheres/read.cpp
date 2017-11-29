@@ -1,7 +1,7 @@
 #include "read.h"
 
 void read(){
-    int nparams = 14;
+    int nparams = 19;
     string comment[nparams];
     string input[nparams];
 
@@ -10,7 +10,7 @@ void read(){
         getline(cin, input[i]);
     }
 
-    potential_type = stoi(input[0]); 
+    potential_type = stoi(input[0]);
     sigma = stod(input[1]);
     bfactor = stod(input[2]);
     ncells = stoi(input[3]);
@@ -24,6 +24,11 @@ void read(){
     dr_factor = stoi(input[11]);
     logging = stoi(input[12]);
     read_from_file = (bool) stoi(input[13]);
+    tmmcSamp = (bool) stoi(input[14]);
+    tmmcBias = (bool) stoi(input[15]);
+    tmmcCupstart = stoi(input[16]);
+    tmmcNupstart = stoi(input[17]);
+    tmmcBiasStart = stoi(input[18]);
 
-    L = bfactor * sigma; 
+    L = bfactor * sigma;
 }

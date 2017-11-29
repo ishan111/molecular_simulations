@@ -29,7 +29,7 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 		tmmcC[N][2] = tmmcC[N][2] + accProb ;
 		tmmcC[N][1] = tmmcC[N][1] + 1 - accProb ;
 	}
-	if (sampleNo>15000 & sampleNo%1000==0){
+	if (sampleNo>tmmcNupstart & sampleNo%1000==0){
          for (int i=0;i<=Nmax;i+=1){
         	 tmmcRsum = tmmcC[i][0]+tmmcC[i][1]+tmmcC[i][2];
 					 if (tmmcRsum!=0){
@@ -42,6 +42,7 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 
 	}
 }
+
 double tmmc_bias(bool inc){
 	double bias;
 	if(inc & N+1 <= Nmax ){
@@ -75,7 +76,7 @@ void tmmc_hist(){
 			tmmcHist[i]=tmmcHist[i]*tmmcHist[i-1];
 		}
 		tmmcHist_data<<tmmcHist[i]<<endl;
-		tmmcHist_data<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
+		//tmmcHist_data<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
 
 	}
 	tmmcHist_data.close();
