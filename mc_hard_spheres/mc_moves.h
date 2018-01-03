@@ -7,7 +7,6 @@
 #include "interaction.h"
 #include <cmath>
 
-
 using namespace std;
 
 void hard_displace();

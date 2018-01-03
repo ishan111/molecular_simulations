@@ -42,7 +42,7 @@ double dist(vector<double> newp, vector<double> p){
 
 double partE(vector<double> newp, vector<double> p){
   double  pDist = dist(newp, p) ;
-  double pEnergy =  4*(epsilon)*(((sigma/pDist)^12) - ((sigma/pDist)^12))
+  double pEnergy =  4*(epsilon)*(pow((sigma/pDist),12) - pow((sigma/pDist),12)) ;
   return pEnergy;
 }
 
@@ -142,7 +142,7 @@ double energy_hard_displace(vector<double> newp, int p){
       }
 
 
-      int energy_hard_remove(int p){
+      double energy_hard_remove(int p){
         vector<double> part = particles[p];
 
         vector<int> bc = {(int) (part[0]/cell_list_div), (int) (part[1]/cell_list_div), (int) (part[2]/cell_list_div)};

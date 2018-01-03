@@ -23,6 +23,7 @@ int ncycles = 0;
 int samp_ival = 0;
 double delta = 0;
 double zz;
+double T ;
 
 //Optimization: Cell list
 int ncells;
