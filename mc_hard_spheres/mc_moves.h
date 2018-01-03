@@ -1,11 +1,12 @@
 #ifndef MCMOVE
 #define MCMOVE
 
+#include "tmmc.h"
 #include "common_params.h"
 #include "logging.h"
 #include "interaction.h"
 #include<cmath>
-#include "tmmc.h"
+
 
 using namespace std;
 
