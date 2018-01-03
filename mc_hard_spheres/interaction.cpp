@@ -83,9 +83,7 @@ double energy_hard_displace(vector<double> newp, int p){
     bc = {(int) (part[0]/cell_list_div), (int) (part[1]/cell_list_div), (int) (part[2]/cell_list_div)};
     bx = map_box(bc);
 
-    //which boxes to check in
-    boxes = {};
-    delta_neigh = {-1,0,1};
+
 
     for(vector<int>::iterator a = delta_neigh.begin(); a < delta_neigh.end(); a++){
       for(vector<int>::iterator b = delta_neigh.begin(); b < delta_neigh.end(); b++){

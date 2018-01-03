@@ -2,9 +2,9 @@
 #define INTERACTION
 
 #include "common_params.h"
-#include<cmath>
-#include<vector>
-#include<list>
+#include <cmath>
+#include <vector>
+#include <list>
 
 using namespace std;
 //optimization: cell list
