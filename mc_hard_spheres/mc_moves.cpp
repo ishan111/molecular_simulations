@@ -12,7 +12,7 @@ void hard_displace(){
 
     double e_new = energy_hard_displace(newp,p); //energy on displacing p to newp
     double arg = -e_new/T;
-    if(log(rand())<=e_new)){
+    if(log(rand())<=e_new){
         cell_list_remove(particles[p]);
         particles[p] = newp;
         cell_list_insert(particles[p]);
@@ -33,7 +33,7 @@ void hard_exchange(){
       double e_new = energy_hard_insert(newp); //energy on inserting newp
 
 
-      double arg = log(pow(L,3)) + log(zz)-log(N+1)-e_new/T ;
+      double arg = log(pow(L,3)) + log(zz) - log(N+1) - e_new/T ;
       double biasedArg ;
       double bias = 1 ;
       if (tmmcBias == true & sampleNo>tmmcBiasStart){
@@ -68,7 +68,6 @@ void hard_exchange(){
         if(N==0) return;
         int p = ceil(ranf() * N);
         double e_new = energy_hard_remove(p); //energy on inserting newp
-        double arg = log(pow(L,3)) + log(zz) - log(N+1) - e_new/T ;
         if (tmmcSamp==true & tmmcBias == true & sampleNo>tmmcBiasStart){
           bias = tmmc_bias(inc);
         }

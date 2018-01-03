@@ -12,7 +12,7 @@ void read(){
 
     potential_type = stoi(input[0]);
     sigma = stod(input[1]);
-    epsilon = stod(input[2])
+    epsilon = stod(input[2]);
     bfactor = stod(input[3]);
     ncells = stoi(input[4]);
     periodic = (bool) stod(input[5]);
@@ -30,7 +30,7 @@ void read(){
     tmmcCupstart = stoi(input[17]);
     tmmcNupstart = stoi(input[18]);
     tmmcBiasStart = stoi(input[19]);
-    T = stoi(input[20])
+    T = stod(input[20]);
 
     L = bfactor * sigma;
 }

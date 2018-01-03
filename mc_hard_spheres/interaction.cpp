@@ -41,14 +41,14 @@ double dist(vector<double> newp, vector<double> p){
 }
 
 double partE(vector<double> newp, vector<double> p){
-  double  pDist = dist(newp, p)
+  double  pDist = dist(newp, p) ;
   double pEnergy =  4*(epsilon)*(((sigma/pDist)^12) - ((sigma/pDist)^12))
   return pEnergy;
 }
 
 //hard sphere model - returns 0 if no overlaps, 1 if there is an overlap
 //uses cell list for efficient calculations
-int energy_hard_displace(vector<double> newp, int p){
+double energy_hard_displace(vector<double> newp, int p){
   vector<double> part = particles[p];
   vector<int> bc = {(int) (newp[0]/cell_list_div), (int) (newp[1]/cell_list_div), (int) (newp[2]/cell_list_div)};
   int bx = map_box(bc);
@@ -80,12 +80,12 @@ int energy_hard_displace(vector<double> newp, int p){
       }
     }
 
-    vector<int> bc = {(int) (part[0]/cell_list_div), (int) (part[1]/cell_list_div), (int) (part[2]/cell_list_div)};
-    int bx = map_box(bc);
+    bc = {(int) (part[0]/cell_list_div), (int) (part[1]/cell_list_div), (int) (part[2]/cell_list_div)};
+    bx = map_box(bc);
 
     //which boxes to check in
-    vector<int> boxes = {};
-    vector<int> delta_neigh = {-1,0,1};
+    boxes = {};
+    delta_neigh = {-1,0,1};
 
     for(vector<int>::iterator a = delta_neigh.begin(); a < delta_neigh.end(); a++){
       for(vector<int>::iterator b = delta_neigh.begin(); b < delta_neigh.end(); b++){

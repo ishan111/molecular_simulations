@@ -25,6 +25,7 @@ extern int ncycles;
 extern int samp_ival; //interval for sampling averages
 extern double delta;
 extern double zz; //activity, exp(beta*mu)/lambda^3
+extern double T ; // temperature
 
 //Optimization: Cell list
 extern int ncells; //number of cells per dimension (user-specified)
