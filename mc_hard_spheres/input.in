@@ -2,6 +2,8 @@ potential type (0 = hard spheres, 1 = Lennard-Jones)
     0
 particle diameter (sigma)
     1.0
+LJ energy factor (epsilon)
+    1.0
 box scaling factor (bfactor)
     50.0
 cell list divisions per dimension (cell_list_div) [must be a divisor of the box scaling factor]
@@ -36,3 +38,5 @@ tmmc Normalized start at iteration:
     20000
 tmmc Bias Start  at iteration:
     50000
+Temperature   (T)
+    1.2

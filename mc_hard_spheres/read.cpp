@@ -1,7 +1,7 @@
 #include "read.h"
 
 void read(){
-    int nparams = 20;
+    int nparams = 21;
     string comment[nparams];
     string input[nparams];
 
@@ -30,6 +30,7 @@ void read(){
     tmmcCupstart = stoi(input[17]);
     tmmcNupstart = stoi(input[18]);
     tmmcBiasStart = stoi(input[19]);
+    T = stoi(input[20])
 
     L = bfactor * sigma;
 }
