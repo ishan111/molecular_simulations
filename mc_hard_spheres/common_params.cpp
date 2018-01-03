@@ -14,7 +14,7 @@ double ranf(){
 
 //Common simulation parameters
 double sigma = 0;
-double epsilon = 0
+double epsilon = 0;
 double bfactor = 0;
 double L = 0;
 int N = 0;
