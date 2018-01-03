@@ -17,7 +17,7 @@ void make_cell_list(){
 }
 
 int map_box(vector<int> bc){ //bc = box coordinates
-    return bc[0]*ncells*ncells + bc[1]*ncells + bc[2];  
+    return bc[0]*ncells*ncells + bc[1]*ncells + bc[2];
 }
 
 void cell_list_insert(vector<double> part){
@@ -29,7 +29,7 @@ void cell_list_insert(vector<double> part){
 void cell_list_remove(vector<double> part){
     vector<int> bc = {(int) (part[0]/cell_list_div), (int) (part[1]/cell_list_div), (int) (part[2]/cell_list_div)};
     int bx = map_box(bc);
-    cell_list[bx].remove(part);    
+    cell_list[bx].remove(part);
 }
 
 //distance and overlap checking
@@ -51,7 +51,7 @@ int energy_hard_displace(vector<double> newp, int p){
     vector<double> part = particles[p];
     vector<int> bc = {(int) (newp[0]/cell_list_div), (int) (newp[1]/cell_list_div), (int) (newp[2]/cell_list_div)};
     int bx = map_box(bc);
-   
+
     //which boxes to check in
     vector<int> boxes = {};
     vector<int> delta_neigh = {-1,0,1};
@@ -59,8 +59,8 @@ int energy_hard_displace(vector<double> newp, int p){
     for(vector<int>::iterator a = delta_neigh.begin(); a < delta_neigh.end(); a++){
         for(vector<int>::iterator b = delta_neigh.begin(); b < delta_neigh.end(); b++){
             for(vector<int>::iterator c = delta_neigh.begin(); c < delta_neigh.end(); c++){
-                vector<int> neigh = {((bc[0] + *a) % ncells + ncells) % ncells, 
-                                     ((bc[1] + *b) % ncells + ncells) % ncells, 
+                vector<int> neigh = {((bc[0] + *a) % ncells + ncells) % ncells,
+                                     ((bc[1] + *b) % ncells + ncells) % ncells,
                                      ((bc[2] + *c) % ncells + ncells) % ncells};
                 boxes.push_back(map_box(neigh));
             }
@@ -77,8 +77,8 @@ int energy_hard_displace(vector<double> newp, int p){
                     break;
                 }
             }
-        }         
-    }        
+        }
+    }
 
     if(olap){
         return 1;
@@ -88,7 +88,7 @@ int energy_hard_displace(vector<double> newp, int p){
 int energy_hard_insert(vector<double> newp){
     vector<int> bc = {(int) (newp[0]/cell_list_div), (int) (newp[1]/cell_list_div), (int) (newp[2]/cell_list_div)};
     int bx = map_box(bc);
-   
+
     //which boxes to check in
     vector<int> boxes;
     vector<int> delta_neigh = {-1,0,1};
@@ -96,8 +96,8 @@ int energy_hard_insert(vector<double> newp){
     for(vector<int>::iterator a = delta_neigh.begin(); a < delta_neigh.end(); a++){
         for(vector<int>::iterator b = delta_neigh.begin(); b < delta_neigh.end(); b++){
             for(vector<int>::iterator c = delta_neigh.begin(); c < delta_neigh.end(); c++){
-                vector<int> neigh = {((bc[0] + *a) % ncells + ncells) % ncells, 
-                                     ((bc[0] + *b) % ncells + ncells) % ncells, 
+                vector<int> neigh = {((bc[0] + *a) % ncells + ncells) % ncells,
+                                     ((bc[0] + *b) % ncells + ncells) % ncells,
                                      ((bc[0] + *c) % ncells + ncells) % ncells};
                 boxes.push_back(map_box(neigh));
             }
@@ -112,8 +112,8 @@ int energy_hard_insert(vector<double> newp){
                 olap = true;
                 break;
             }
-        }         
-    }        
+        }
+    }
 
     if(olap){
         return 1;
