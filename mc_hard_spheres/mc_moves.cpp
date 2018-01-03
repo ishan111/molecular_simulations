@@ -51,7 +51,8 @@ void hard_exchange(){
                 cout << "Rejected by rule: " << ranf() << " " << arg << endl;
             }*/
             if(log(ranf()) < biasedArg) { //acceptance condition
-                particles.push_back(newp); N+=1;
+                particles.push_back(newp);
+                 N+=1;
                 cell_list_insert(newp);
 
                 succ_ins += 1;
@@ -62,11 +63,11 @@ void hard_exchange(){
 
     }
     else{ //remove
-        double biasedArg;
-        double bias = 1;
-        att_del += 1;
-        if(N==0) return;
-        int p = ceil(ranf() * N);
+      double biasedArg;
+      double bias = 1;
+      att_del += 1;
+      if(N>1) {
+        int p = ceil(ranf() * N)-1;
         double e_new = energy_hard_remove(p); //energy on inserting newp
         if (tmmcSamp==true & tmmcBias == true & sampleNo>tmmcBiasStart){
           bias = tmmc_bias(inc);
@@ -83,11 +84,13 @@ void hard_exchange(){
 
         if(ranf() < biasedArg){ //acceptance condition
 
-            cell_list_remove(particles[p]);
-            particles.erase(particles.begin() + p); N-=1;
+          cell_list_remove(particles[p]);
+          particles.erase(particles.begin() + p);
+          N-=1;
 
-            succ_del += 1;
-            log_current_config(3);
+          succ_del += 1;
+          log_current_config(3);
         }
+      }
     }
 }

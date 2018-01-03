@@ -22,8 +22,8 @@ bool periodic = true;
 int ncycles = 0;
 int samp_ival = 0;
 double delta = 0;
-double zz;
-double T ;
+double zz = 0.0115;
+double T = 1.2;
 
 //Optimization: Cell list
 int ncells;

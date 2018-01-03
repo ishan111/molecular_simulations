@@ -1,6 +1,5 @@
 #!/bin/bash
-echo "Running from initial input file"
-./mchs.out < input_init.in
+#./mchs.out < input_init.in
 echo "Running again"
 ./mchs.out < input.in
 echo "Plotting"
@@ -15,5 +14,3 @@ done
 cp particles.state out/
 mv rdf.dat out/
 echo "Done"
-
-
