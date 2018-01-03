@@ -40,9 +40,9 @@ double dist(vector<double> newp, vector<double> p){
     return pow(min(deltax, L-deltax),2) + pow(min(deltay, L-deltay),2) + pow(min(deltaz, L-deltaz),2);
 }
 
-bool overlap(vector<double> newp, vector<double> p){
-    bool olap =  dist(newp, p) < pow(sigma,2);
-    return olap;
+double overlap(vector<double> newp, vector<double> p){
+    double pEnergy =  dist(newp, p) < pow(sigma,2);
+    return pEnergy;
 }
 
 //hard sphere model - returns 0 if no overlaps, 1 if there is an overlap
@@ -85,7 +85,7 @@ int energy_hard_displace(vector<double> newp, int p){
     }
     return 0;
 }
-int energy_hard_insert(vector<double> newp){
+double energy_hard_insert(vector<double> newp){
     vector<int> bc = {(int) (newp[0]/cell_list_div), (int) (newp[1]/cell_list_div), (int) (newp[2]/cell_list_div)};
     int bx = map_box(bc);
 

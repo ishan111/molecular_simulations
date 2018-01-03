@@ -16,6 +16,7 @@ double ranf();
 
 //Common simulation parameters
 extern double sigma; //particle diameter
+extern double epsilon;
 extern double bfactor; //box scaling factor
 extern double L; //box dimension
 extern int N; //no of particles
