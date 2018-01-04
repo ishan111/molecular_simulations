@@ -7,15 +7,15 @@ LJ energy factor (epsilon)
 box scaling factor (bfactor)
 8.0
 cell list divisions per dimension (cell_list_div)
-5
+4
 periodic boundary conditions
 1
 number of cycles (ncycles)
 1000000
 sampling interval (samp_ival)
-50000
+500000
 activity (zz = exp(beta*mu)/lambda^3)
-0.053
+0.07
 (gcmc) exchanges to displacements ratio
 0.7
 magnitude of attempted displacement (delta)
@@ -33,10 +33,10 @@ uses tmmc? (0 = false, 1 = true)
 uses tmmc for Bias (0 = false, 1 = true)
 0
 tmmc Collection start at iteration:
-10000
+100000
 tmmc Normalized start at iteration:
-20000
+200000
 tmmc Bias Start  at iteration:
-50000
+500000
 Temperature
 1.2
