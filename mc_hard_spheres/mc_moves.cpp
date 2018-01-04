@@ -4,7 +4,6 @@
 void hard_displace(){
     att_disp+=1;
     if(N == 0) return;
-
     int p = int(ranf() * N); //0 to N-1
 
     vector<double> newp = {particles[p][0] + (ranf()-0.5)*2*delta, particles[p][1] + (ranf()-0.5)*2*delta, particles[p][2] + (ranf()-0.5)*2*delta};
@@ -12,7 +11,7 @@ void hard_displace(){
 
     double e_new = energy_hard_displace(newp,p); //energy on displacing p to newp
     double arg = -e_new/T;
-    if(log(rand())<=e_new){
+    if(log(ranf())<=arg){
         cell_list_remove(particles[p]);
         particles[p] = newp;
         cell_list_insert(particles[p]);
@@ -40,13 +39,13 @@ void hard_exchange(){
         bias = tmmc_bias(inc);
       }
       else{
-        bias = 1;
+        bias = 0;
       }
       if(tmmcSamp==true){
         tmmc_update(arg,inc,true);
       }
 
-            biasedArg = log(bias) + arg ;
+            biasedArg = bias + arg ;
           /*  if(ranf() >= biasedArg){
                 cout << "Rejected by rule: " << ranf() << " " << arg << endl;
             }*/
@@ -73,16 +72,16 @@ void hard_exchange(){
           bias = tmmc_bias(inc);
         }
         else{
-          bias = 1;
+          bias = 0;
         }
         double arg = log(N)-log(pow(L,3)) -log(zz)-e_new/T ;
-        biasedArg = log(bias) + arg ;
+        biasedArg = bias + arg ;
         if (tmmcSamp==true){
           tmmc_update(arg,inc,true);
         }
 
 
-        if(ranf() < biasedArg){ //acceptance condition
+        if(log(ranf()) < biasedArg){ //acceptance condition
 
           cell_list_remove(particles[p]);
           particles.erase(particles.begin() + p);

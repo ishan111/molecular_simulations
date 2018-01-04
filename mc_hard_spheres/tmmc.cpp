@@ -52,12 +52,12 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 double tmmc_bias(bool inc){
 	double bias;
 	if(inc & N+1 <= Nmax ){
-		bias = tmmcN[N][0]==0? tmmcN[N+1][2]/tmmcN[N][0]:1;
+		bias = tmmcN[N][0]!=0? (log(tmmcN[N+1][2])-log(tmmcN[N][0])):1;
 
 	}
 	else{
 		if (N!=0){
-			bias = tmmcN[N][2]==0? tmmcN[N-1][0]/tmmcN[N][2]:1;
+			bias = tmmcN[N][2]!=0? (log(tmmcN[N-1][0])-log(tmmcN[N][2])):1;
 
 		}
 		else{

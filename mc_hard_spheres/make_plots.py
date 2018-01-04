@@ -16,7 +16,7 @@ f_rdf = open("rdf.dat","r")
 n = int(f_rdf.readline())
 x = [None for i in range(n)]
 y = [None for i in range(n)]
-for i in range(n):        
+for i in range(n):
     x[i] = map(float, f_rdf.readline().strip().split())
     y[i] = map(float, f_rdf.readline().strip().split())
 xarr = np.array(x[0])
@@ -56,7 +56,7 @@ plt.savefig('ln_histogram.png', dpi=300, bbox_inches='tight')
 """for new_act in new_act_list:
     rewy = [None for i in range(len(hist[:,0]))]
     for i in range(len(hist[:,0])):
-        rewy[i] = hist[i,1] * np.exp((np.log(new_act) - np.log(old_act)) * hist[i,0]) 
+        rewy[i] = hist[i,1] * np.exp((np.log(new_act) - np.log(old_act)) * hist[i,0])
     normf = sum(rewy)
     rewyarr = np.array(rewy)
     rewyarr = rewyarr/normf
@@ -73,7 +73,7 @@ f_state = open("particles.state","r")
 
 n = int(f_state.readline())
 particles = [None for i in range(n)]
-for i in range(n):        
+for i in range(n):
     particles[i] = map(float, f_state.readline().strip().split())
 parr = np.array(particles)
 
@@ -89,5 +89,3 @@ for i in range(n):
     )
 )
 fig1.savefig('particles.png', dpi=300, bbox_inches='tight')
-
-

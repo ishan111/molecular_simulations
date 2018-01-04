@@ -19,7 +19,7 @@ activity (zz = exp(beta*mu)/lambda^3)
 (gcmc) exchanges to displacements ratio
 0.7
 magnitude of attempted displacement (delta)
-0.75
+2
 (rdf plot param) maximum radius for rdf plot, L/()
 8
 (rdf plot param) shell thickness dr = L/()
@@ -31,7 +31,7 @@ read state from file (0 = false, 1 = true)
 uses tmmc? (0 = false, 1 = true)
 1
 uses tmmc for Bias (0 = false, 1 = true)
-1
+0
 tmmc Collection start at iteration:
 10000
 tmmc Normalized start at iteration:
