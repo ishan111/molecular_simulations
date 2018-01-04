@@ -11,11 +11,11 @@ cell list divisions per dimension (cell_list_div)
 periodic boundary conditions
 1
 number of cycles (ncycles)
-100000
+1000000
 sampling interval (samp_ival)
 50000
 activity (zz = exp(beta*mu)/lambda^3)
-0.052
+0.053
 (gcmc) exchanges to displacements ratio
 0.7
 magnitude of attempted displacement (delta)
