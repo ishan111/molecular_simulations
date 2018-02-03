@@ -16,6 +16,7 @@ ofstream tmmcHist_dataC;
 ofstream tmmcHist_dataN;
 
 void tmmc_update(double accProb,bool inc,bool UpdateNorm){
+	double accProbExp=accProb;
 	if (inc){
 		if( Nmax<N+1){
 			Nmax=N+1;
@@ -23,16 +24,16 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 			tmmcN.push_back({0,0,0});
 		}
 		if (sampleNo> tmmcCupstart){
-		accProb = exp(accProb)<1?exp(accProb):1;
-		tmmcC[N][0] = tmmcC[N][0] + accProb ;
-		tmmcC[N][1] = tmmcC[N][1] + 1 - accProb ;
+		accProbExp = exp(accProb)<1?exp(accProb):1;
+		tmmcC[N][0] = tmmcC[N][0] + accProbExp ;
+		tmmcC[N][1] = tmmcC[N][1] + 1 - accProbExp ;
 		}
 	}
 	else {
 		if (sampleNo>tmmcCupstart){
-		accProb = exp(accProb)<1?exp(accProb):1;
-		tmmcC[N][2] = tmmcC[N][2] + accProb ;
-		tmmcC[N][1] = tmmcC[N][1] + 1 - accProb ;
+		accProbExp = exp(accProb)<1?exp(accProb):1;
+		tmmcC[N][2] = tmmcC[N][2] + accProbExp ;
+		tmmcC[N][1] = tmmcC[N][1] + 1 - accProbExp ;
 		}
 	}
 	if (sampleNo>tmmcNupstart){
@@ -78,7 +79,7 @@ void tmmc_hist(){
 			tmmcHist.push_back({log(tmmcN[i][0]!=0?tmmcN[i][0]:1)-log(tmmcN[i+1][2]!=0?tmmcN[i+1][2]:1)});
 		}
 		else{
-			tmmcHist.push_back({1});
+			tmmcHist.push_back({0});
 		}
 
 		if(i>0){
