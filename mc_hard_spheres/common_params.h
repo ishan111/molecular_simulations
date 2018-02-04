@@ -30,7 +30,7 @@ extern double T ; // temperature
 //Optimization: Cell list
 extern int ncells; //number of cells per dimension (user-specified)
 extern double cell_list_div; //size of a single cell list division along a dimension (calculated)
-extern vector<list<vector<double> > > cell_list;
+
 
 //GCMC parameters
 extern double exc_disp_ratio;

@@ -8,10 +8,6 @@
 
 using namespace std;
 //optimization: cell list
-void make_cell_list();
-int map_box(vector<int>);
-void cell_list_insert(vector<double>);
-void cell_list_remove(vector<double>);
 
 double dist(vector<double>,vector<double>);
 double partE(vector<double>,vector<double>);

@@ -12,9 +12,9 @@ void hard_displace(){
     double e_new = energy_hard_displace(newp,p); //energy on displacing p to newp
     double arg = -e_new/T;
     if(log(ranf())<=arg){
-        cell_list_remove(particles[p]);
+
         particles[p] = newp;
-        cell_list_insert(particles[p]);
+
 
         succ_disp += 1;
         log_current_config(1);
@@ -52,7 +52,7 @@ void hard_exchange(){
             if(log(ranf()) < biasedArg) { //acceptance condition
                 particles.push_back(newp);
                  N+=1;
-                cell_list_insert(newp);
+
 
                 succ_ins += 1;
                 log_current_config(2);
@@ -83,7 +83,7 @@ void hard_exchange(){
 
         if(log(ranf()) < biasedArg){ //acceptance condition
 
-          cell_list_remove(particles[p]);
+          
           particles.erase(particles.begin() + p);
           N-=1;
 

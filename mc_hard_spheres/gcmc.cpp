@@ -2,7 +2,7 @@
 #include "common_params.h"
 
 void gcmc(){
-    make_cell_list();
+
     for(int i = 1; i <= ncycles; i++){
     	sampleNo+=1;
         if(ranf() <= exc_disp_ratio){

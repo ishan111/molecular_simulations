@@ -28,7 +28,6 @@ double T = 1.2;
 //Optimization: Cell list
 int ncells;
 double cell_list_div;
-vector<list<vector<double> > > cell_list;
 
 //GCMC parameters
 double exc_disp_ratio = 0.6; //ratio of exchanges to displacements
