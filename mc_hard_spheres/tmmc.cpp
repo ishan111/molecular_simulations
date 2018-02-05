@@ -1,8 +1,6 @@
-/*
-* tmmc.cpp
-*
+/* tmmc.cpp
 *  Created on: 19-Nov-2017
-*      Author: ishan
+*  Author: ishan
 */
 #include "tmmc.h"
 
