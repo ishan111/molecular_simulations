@@ -22,7 +22,7 @@ void hard_displace(){
 }
 
 void hard_exchange(){
-    bool bias ;
+
     if(ranf() > 0.5){ //insert
     	inc = true ;
       att_ins += 1;
@@ -83,7 +83,7 @@ void hard_exchange(){
 
         if(log(ranf()) < biasedArg){ //acceptance condition
 
-          
+
           particles.erase(particles.begin() + p);
           N-=1;
 

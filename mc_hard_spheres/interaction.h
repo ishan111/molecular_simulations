@@ -9,7 +9,7 @@
 using namespace std;
 //optimization: cell list
 
-double dist(vector<double>,vector<double>);
+vector<double> dist(vector<double>,vector<double>);
 double partE(vector<double>,vector<double>);
 double energy_hard_displace(vector<double>,int);
 double energy_hard_insert(vector<double>);

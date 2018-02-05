@@ -4,21 +4,46 @@ using namespace std;
 
 
 //distance and overlap checking
-double dist(vector<double> newp, vector<double> p){
-  double deltax = abs(newp[0] - p[0]);
-  double deltay = abs(newp[1] - p[1]);
-  double deltaz = abs(newp[2] - p[2]);
-  return pow(pow(min(deltax, L-deltax),2) + pow(min(deltay, L-deltay),2) + pow(min(deltaz, L-deltaz),2),0.5);
+vector<double> dist(vector<double> newp, vector<double> p){
+  vector<double> dist ;
+  if (truncDist<bfactor/2){
+    double deltax = abs(newp[0] - p[0]);
+    double deltay = abs(newp[1] - p[1]);
+    double deltaz = abs(newp[2] - p[2]);
+    dist.push_back(pow(pow(min(deltax, L-deltax),2) + pow(min(deltay, L-deltay),2) + pow(min(deltaz, L-deltaz),2),0.5));
+  }
+  else {
+
+    int noCopies = floor(truncDist/bfactor);
+    for(int i=-noCopies;i<=noCopies;i++){
+      for (int j=-noCopies;j<=noCopies;j++){
+        for (int k=-noCopies;k<=noCopies;k++){
+
+          double deltax = abs(i*bfactor+newp[0] - p[0]);
+          double deltay = abs(j*bfactor+newp[1] - p[1]);
+          double deltaz = abs(k*bfactor+newp[2] - p[2]);
+          dist.push_back(pow(pow(deltax,2) + pow(deltay,2) + pow(deltaz,2),0.5));
+
+
+        }
+      }
+    }
+  }
+
+  return dist;
+
 }
 
 double partE(vector<double> newp, vector<double> p){
-  double  pDist = dist(newp, p) ;
-  if (pDist<truncDist) {
-    double pEnergy =  4*(epsilon)*(pow((sigma/pDist),12) - pow((sigma/pDist),6)) ;
-    else {
-      double pEnergy = 0 ;
+  vector<double>  pDist = dist(newp, p) ;
+  double pEnergy = 0;
+  for(vector<double>::iterator itp = pDist.begin(); itp != pDist.end(); itp++){
+    if (*itp<truncDist) {
+      pEnergy =  pEnergy + 4*(epsilon)*(pow((sigma/(*itp)),12) - pow((sigma/(*itp)),6)) ;
     }
-    return pEnergy;
+
+  }
+  return pEnergy;
 }
 
 //hard sphere model - returns 0 if no overlaps, 1 if there is an overlap
@@ -51,7 +76,7 @@ double energy_hard_insert(vector<double> newp){
 
   double pEnergy = 0;
 
-for(vector<vector<double>> ::iterator itp = particles.begin(); itp != particles.end(); itp++){
+  for(vector<vector<double>> ::iterator itp = particles.begin(); itp != particles.end(); itp++){
 
     pEnergy = pEnergy + partE(newp, *itp);
 
