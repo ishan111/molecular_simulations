@@ -40,3 +40,5 @@ tmmc Bias Start  at iteration:
 500000
 Temperature
 1.2
+interaction truncation distance
+4

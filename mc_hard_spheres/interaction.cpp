@@ -13,8 +13,12 @@ double dist(vector<double> newp, vector<double> p){
 
 double partE(vector<double> newp, vector<double> p){
   double  pDist = dist(newp, p) ;
-  double pEnergy =  4*(epsilon)*(pow((sigma/pDist),12) - pow((sigma/pDist),6)) ;
-  return pEnergy;
+  if (pDist<truncDist) {
+    double pEnergy =  4*(epsilon)*(pow((sigma/pDist),12) - pow((sigma/pDist),6)) ;
+    else {
+      double pEnergy = 0 ;
+    }
+    return pEnergy;
 }
 
 //hard sphere model - returns 0 if no overlaps, 1 if there is an overlap
