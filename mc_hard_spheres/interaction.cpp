@@ -14,7 +14,7 @@ vector<double> dist(vector<double> newp, vector<double> p){
   }
   else {
 
-    int noCopies = floor(truncDist/bfactor);
+    int noCopies = floor(truncDist/bfactor)+1;
     for(int i=-noCopies;i<=noCopies;i++){
       for (int j=-noCopies;j<=noCopies;j++){
         for (int k=-noCopies;k<=noCopies;k++){
@@ -38,7 +38,7 @@ double partE(vector<double> newp, vector<double> p){
   vector<double>  pDist = dist(newp, p) ;
   double pEnergy = 0;
   for(vector<double>::iterator itp = pDist.begin(); itp != pDist.end(); itp++){
-    if (*itp<truncDist) {
+    if (*itp<=truncDist) {
       pEnergy =  pEnergy + 4*(epsilon)*(pow((sigma/(*itp)),12) - pow((sigma/(*itp)),6)) ;
     }
 

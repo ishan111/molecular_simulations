@@ -13,7 +13,7 @@ periodic boundary conditions
 number of cycles (ncycles)
 1000000
 sampling interval (samp_ival)
-500000
+5000
 activity (zz = exp(beta*mu)/lambda^3)
 0.07
 (gcmc) exchanges to displacements ratio
