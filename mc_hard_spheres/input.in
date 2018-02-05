@@ -15,7 +15,7 @@ number of cycles (ncycles)
 sampling interval (samp_ival)
 500000
 activity (zz = exp(beta*mu)/lambda^3)
-0.07
+0.0515
 (gcmc) exchanges to displacements ratio
 0.7
 magnitude of attempted displacement (delta)

@@ -3,19 +3,19 @@
 
 void gcmc(){
 
-    for(int i = 1; i <= ncycles; i++){
-    	sampleNo+=1;
-        if(ranf() <= exc_disp_ratio){
-            hard_exchange();
-        }
-        else{
-            hard_displace();
-        }
-        if (i%samp_ival == 0){
-            sample_rdf(L/rmax_factor, L/dr_factor);
-        }
+  for(int i = 1; i <= ncycles; i++){
+    sampleNo+=1;
+    if(ranf() <= exc_disp_ratio){
+      hard_exchange();
     }
-    if(tmmcSamp==true){
-      tmmc_hist();
+    else{
+      hard_displace();
     }
+    if (i%samp_ival == 0){
+    //  sample_rdf(L/rmax_factor, L/dr_factor);
+    }
+  }
+  if(tmmcSamp==true){
+    tmmc_hist();
+  }
 }
