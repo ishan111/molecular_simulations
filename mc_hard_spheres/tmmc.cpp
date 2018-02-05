@@ -1,9 +1,9 @@
 /*
- * tmmc.cpp
- *
- *  Created on: 19-Nov-2017
- *      Author: ishan
- */
+* tmmc.cpp
+*
+*  Created on: 19-Nov-2017
+*      Author: ishan
+*/
 #include "tmmc.h"
 
 
@@ -24,27 +24,29 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 			tmmcN.push_back({0,0,0});
 		}
 		if (sampleNo> tmmcCupstart){
-		accProbExp = exp(accProb)<1?exp(accProb):1;
-		tmmcC[N][0] = tmmcC[N][0] + accProbExp ;
-		tmmcC[N][1] = tmmcC[N][1] + 1 - accProbExp ;
+			accProbExp = exp(accProb);
+			accProbExp = accProbExp<1?accProbExp:1;
+			tmmcC[N][0] = tmmcC[N][0] + accProbExp ;
+			tmmcC[N][1] = tmmcC[N][1] + 1 - accProbExp ;
 		}
 	}
 	else {
 		if (sampleNo>tmmcCupstart){
-		accProbExp = exp(accProb)<1?exp(accProb):1;
-		tmmcC[N][2] = tmmcC[N][2] + accProbExp ;
-		tmmcC[N][1] = tmmcC[N][1] + 1 - accProbExp ;
+			accProbExp = exp(accProb);
+			accProbExp = accProbExp<1?accProbExp:1;
+			tmmcC[N][2] = tmmcC[N][2] + accProbExp ;
+			tmmcC[N][1] = tmmcC[N][1] + 1 - accProbExp ;
 		}
 	}
 	if (sampleNo>tmmcNupstart){
-         for (int i=0;i<=Nmax;i+=1){
-        	 tmmcRsum = tmmcC[i][0]+tmmcC[i][1]+tmmcC[i][2];
-					 if (tmmcRsum!=0){
-             tmmcN[i][0]=tmmcC[i][0]/tmmcRsum;
-             tmmcN[i][1]=tmmcC[i][1]/tmmcRsum;
-             tmmcN[i][2]=tmmcC[i][2]/tmmcRsum;
-         	 }
-				 }
+		for (int i=0;i<=Nmax;i+=1){
+			tmmcRsum = tmmcC[i][0]+tmmcC[i][1]+tmmcC[i][2];
+			if (tmmcRsum!=0){
+				tmmcN[i][0]=tmmcC[i][0]/tmmcRsum;
+				tmmcN[i][1]=tmmcC[i][1]/tmmcRsum;
+				tmmcN[i][2]=tmmcC[i][2]/tmmcRsum;
+			}
+		}
 
 
 	}
@@ -52,17 +54,21 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 
 double tmmc_bias(bool inc){
 	double bias;
-	if(inc & N+1 <= Nmax ){
-		bias = tmmcN[N][0]!=0? (log(tmmcN[N+1][2])-log(tmmcN[N][0])):1;
-
+	if(inc){
+		if (N+1 <= Nmax ) {
+			bias = tmmcN[N][0]!=0? (log(tmmcN[N+1][2])-log(tmmcN[N][0])):1e+10;
+		}
+		else{
+			bias = 1e+10 ;
+		}
 	}
 	else{
 		if (N!=0){
-			bias = tmmcN[N][2]!=0? (log(tmmcN[N-1][0])-log(tmmcN[N][2])):1;
+			bias = tmmcN[N][2]!=0? (log(tmmcN[N-1][0])-log(tmmcN[N][2])):1e+10;
 
 		}
 		else{
-			bias = 1;
+			bias = 0;
 		}
 
 	}
@@ -70,7 +76,7 @@ double tmmc_bias(bool inc){
 }
 
 void tmmc_hist(){
-  tmmcHist_data.open("tmmc.dat");
+	tmmcHist_data.open("tmmc.dat");
 	tmmcHist_dataC.open("tmmcC.dat");
 	tmmcHist_dataN.open("tmmcN.dat");
 
