@@ -11,9 +11,9 @@ void gcmc(){
         else{
             hard_displace();
         }
-        if (i%samp_ival == 0){
+      /*  if (i%samp_ival == 0){
             sample_rdf(L/rmax_factor, L/dr_factor);
-        }
+        }*/
     }
     if(tmmcSamp==true){
       tmmc_hist();

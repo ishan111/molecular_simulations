@@ -21,10 +21,10 @@ int main(){
         collect();
     }
     log_init();
-    sample_init();
+    //sample_init();
     gcmc();
     log_finalize();
-    sample_finalize();
+    //sample_finalize();
     save();
     return 0;
 }
