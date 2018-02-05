@@ -7,6 +7,9 @@ python make_plots.py
 mkdir out
 mv gcmc.hist out/
 mv gcmc.log out/
+mv tmmcN.dat out/
+mv tmmc.dat out/
+mc tmmcC.dat out/
 cp input.in out/
 for i in *.[Pp][Nn][Gg]; do
     mv $i out/
