@@ -30,6 +30,8 @@ double T = 1.2;
 int ncells;
 double cell_list_div;
 
+double sampEnergy = 0 ;
+
 //GCMC parameters
 double exc_disp_ratio = 0.6; //ratio of exchanges to displacements
 
