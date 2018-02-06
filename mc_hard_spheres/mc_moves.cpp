@@ -14,7 +14,7 @@ void hard_displace(){
     if(log(ranf())<=arg){
 
         particles[p] = newp;
-
+        sampEnergy = sampEnergy + e_new ;
 
         succ_disp += 1;
         log_current_config(1);
@@ -52,7 +52,7 @@ void hard_exchange(){
             if(log(ranf()) < biasedArg) { //acceptance condition
                 particles.push_back(newp);
                  N+=1;
-
+                 sampEnergy = sampEnergy + e_new ;
 
                 succ_ins += 1;
                 log_current_config(2);
@@ -86,7 +86,7 @@ void hard_exchange(){
 
           particles.erase(particles.begin() + p);
           N-=1;
-
+          sampEnergy = sampEnergy + e_new ;
           succ_del += 1;
           log_current_config(3);
         }

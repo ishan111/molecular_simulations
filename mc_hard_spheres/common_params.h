@@ -33,6 +33,8 @@ extern int ncells; //number of cells per dimension (user-specified)
 extern double cell_list_div; //size of a single cell list division along a dimension (calculated)
 
 
+extern double sampEnergy ;
+
 //GCMC parameters
 extern double exc_disp_ratio;
 

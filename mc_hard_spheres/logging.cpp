@@ -2,6 +2,7 @@
 
 ofstream config_log;
 ofstream hgram_data;
+ofstream energy_hist;
 vector<int> npart;
 map<int,int> hgram;
 
@@ -23,16 +24,17 @@ void log_init(){
     cout << "Logging configurations? " << logging << endl;
     cout << "Reading configuration from file? " << read_from_file << endl;
     cout << "----BEGIN_SIML----" << endl;
-    cout << endl;    
-    config_log.open ("gcmc.log");  
-    hgram_data.open("gcmc.hist"); //data for histogram    
+    cout << endl;
+    config_log.open ("gcmc.log");
+    hgram_data.open("gcmc.hist"); //data for histogram
+    energy_hist.open("energyHist.dat");
 }
 
 void log_current_config(int move_type){
     if(logging == 1){
         string smtype;
         switch(move_type){
-            case 0: 
+            case 0:
                 smtype = "INIT";
                 break;
             case 1:
@@ -50,17 +52,18 @@ void log_current_config(int move_type){
         }
        /* cout << "[[ Move type: " << smtype << "; Time elapsed since start: " << (clock() - start)/CLOCKS_PER_SEC << " ]]" << endl;*/
 		for(vector<vector<double> >::iterator it = particles.begin(); it < particles.end(); it++){
-            config_log << (*it)[0] << " " << (*it)[1] << " " << (*it)[2] << endl;   
+            config_log << (*it)[0] << " " << (*it)[1] << " " << (*it)[2] << endl;
         }
         config_log << "[[ No. of particles = " << N << " ]]" << endl;
-        config_log << endl;        
+        config_log << endl;
     }
     npart.push_back(N);
+    energy_hist << sampEnergy << endl ;
 }
 
 void log_histogram(){
     for(int i = 0; i < npart.size(); i++){
-        hgram[npart[i]] += 1;    
+        hgram[npart[i]] += 1;
     }
     map<int,int>::iterator it;
     for(it = hgram.begin(); it!= hgram.end(); it++){
@@ -69,17 +72,18 @@ void log_histogram(){
 }
 
 void log_finalize(){
-    cout << "----STATISTICS----" << endl;    
+    cout << "----STATISTICS----" << endl;
     printf("Acceptance:: Displacements: %d/%d = %lf, Insertions: %d/%d = %lf, Removals: %d/%d = %lf\n", succ_disp, att_disp, (double) 1.0*succ_disp/att_disp, succ_ins, att_ins, (double) 1.0*succ_ins/att_ins, succ_del, att_del, (double) 1.0*succ_del/att_del);
     double npartsum = 0;
     double n_avg = 0; //average no of particles
     for(int i = 0; i < npart.size(); i++){
-        npartsum += npart[i];   
+        npartsum += npart[i];
     }
     n_avg = npartsum/npart.size();
     cout << "Average number of particles = " << n_avg << endl;
     cout << "Average density: " << (n_avg * 4.0 / 3.0 * M_PI * pow(sigma/2,3)) / (pow(L,3)) << endl << endl;
     log_histogram();
     config_log.close();
-    hgram_data.close();        
+    hgram_data.close();
+    energy_hist.close();
 }
