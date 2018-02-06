@@ -10,6 +10,8 @@ mv gcmc.log out/
 mv tmmcN.dat out/
 mv tmmc.dat out/
 mv tmmcC.dat out/
+mv energySamp.dat out/
+mv Nsamp.dat out/
 cp input.in out/
 for i in *.[Pp][Nn][Gg]; do
     mv $i out/

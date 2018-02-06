@@ -5,9 +5,9 @@ void save(){
     state_file.open("particles.state");
     state_file << N << endl;
     for(vector<vector<double> >::iterator it = particles.begin(); it < particles.end(); it++){
-        state_file << (*it)[0] << " " << (*it)[1] << " " << (*it)[2] << endl;   
+        state_file << (*it)[0] << " " << (*it)[1] << " " << (*it)[2] << endl;
     }
-    state_file.close();            
+    state_file.close();
 }
 
 void collect(){
@@ -21,5 +21,10 @@ void collect(){
         particles.push_back(newp);
     }
     cout << "Finished reading. Updated particle list with " << particles.size() << " particles." << endl;
-    state_file.close();    
+    Nmax = N ;
+    for(int i=1;i<N+1;i++){
+      tmmcN.push_back({0,0,0});
+      tmmcC.push_back({0,0,0});
+    }
+    state_file.close();
 }

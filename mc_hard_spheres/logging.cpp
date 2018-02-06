@@ -2,7 +2,8 @@
 
 ofstream config_log;
 ofstream hgram_data;
-ofstream energy_hist;
+ofstream energy_samp;
+ofstream N_samp;
 vector<int> npart;
 map<int,int> hgram;
 
@@ -27,7 +28,8 @@ void log_init(){
     cout << endl;
     config_log.open ("gcmc.log");
     hgram_data.open("gcmc.hist"); //data for histogram
-    energy_hist.open("energyHist.dat");
+    energy_samp.open("energySamp.dat");
+    N_samp.open("Nsamp.dat");
 }
 
 void log_current_config(int move_type){
@@ -58,7 +60,8 @@ void log_current_config(int move_type){
         config_log << endl;
     }
     npart.push_back(N);
-    energy_hist << sampEnergy << endl ;
+    energy_samp << sampEnergy << endl ;
+    N_samp << N << endl ;
 }
 
 void log_histogram(){
@@ -85,5 +88,6 @@ void log_finalize(){
     log_histogram();
     config_log.close();
     hgram_data.close();
-    energy_hist.close();
+    energy_samp.close();
+    N_samp.close();
 }

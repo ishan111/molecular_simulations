@@ -66,7 +66,7 @@ int Nmax=0;
 double tmmcRsum = 0 ;
 double bias = 1;
 bool inc = false ;
-vector<double> tmmcHist = {1};
+vector<double> tmmcHist = {0};
 
 int tmmcCupstart = 15000;
 int tmmcNupstart=29000;

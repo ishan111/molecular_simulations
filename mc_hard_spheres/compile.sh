@@ -17,6 +17,6 @@ if [[ -d dist ]]; then
 fi
 mkdir dist
 cp mchs.out dist/
-cp make_plots.py dist/
+#cp make_plots.py dist/
 cp run.sh dist/
-cp input.in dist/input.in
+#cp input.in dist/input.in

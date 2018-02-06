@@ -28,7 +28,7 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 			tmmcC[N][1] = tmmcC[N][1] + 1 - accProbExp ;
 		}
 	}
-	else {
+	else {//removal
 		if (sampleNo>tmmcCupstart){
 			accProbExp = exp(accProb);
 			accProbExp = accProbExp<1?accProbExp:1;
@@ -51,24 +51,17 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 }
 
 double tmmc_bias(bool inc){
-	double bias;
+	double bias = 0;
 	if(inc){
+
 		if (N+1 <= Nmax ) {
-			bias = tmmcN[N][0]!=0? (log(tmmcN[N+1][2])-log(tmmcN[N][0])):1e+10;
+			bias = (tmmcN[N][0] > 0 && log(tmmcN[N+1][2] > 0 )? (log(tmmcN[N+1][2])-log(tmmcN[N][0])):0);
 		}
-		else{
-			bias = 1e+10 ;
-		}
-	}
+}
 	else{
 		if (N!=0){
-			bias = tmmcN[N][2]!=0? (log(tmmcN[N-1][0])-log(tmmcN[N][2])):1e+10;
-
-		}
-		else{
-			bias = 0;
-		}
-
+			bias = (tmmcN[N][2]>0  && log(tmmcN[N-1][0]>0 )? (log(tmmcN[N-1][0])-log(tmmcN[N][2])):0);
+}
 	}
 	return bias ;
 }
@@ -78,17 +71,14 @@ void tmmc_hist(){
 	tmmcHist_dataC.open("tmmcC.dat");
 	tmmcHist_dataN.open("tmmcN.dat");
 
-	for(int i=0;i<Nmax;i+=1){
-		if (tmmcN[i][0]!=0 & tmmcN[i+1][2]!=0){
-			tmmcHist.push_back({log(tmmcN[i][0]!=0?tmmcN[i][0]:1)-log(tmmcN[i+1][2]!=0?tmmcN[i+1][2]:1)});
+	for(int i=1;i<=Nmax;i+=1){
+		if (tmmcN[i][0]>0 && tmmcN[i+1][2]>0){
+			tmmcHist.push_back({log(tmmcN[i-1][0])-log(tmmcN[i][2])});
 		}
 		else{
 			tmmcHist.push_back({0});
 		}
-
-		if(i>0){
-			tmmcHist[i]=tmmcHist[i]+tmmcHist[i-1];
-		}
+		tmmcHist[i]=tmmcHist[i]+tmmcHist[i-1];
 		tmmcHist_data<<tmmcHist[i]<<endl;
 		tmmcHist_dataN<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
 		tmmcHist_dataC<<tmmcC[i][0]<<" "<<tmmcC[i][1]<<" "<<tmmcC[i][2]<<endl;
