@@ -72,7 +72,7 @@ void tmmc_hist(){
 	tmmcHist_dataN.open("tmmcN.dat");
 
 	for(int i=1;i<=Nmax;i+=1){
-		if (tmmcN[i][0]>0 && tmmcN[i+1][2]>0){
+		if (tmmcN[i-1][0]>0 && tmmcN[i][2]>0){
 			tmmcHist.push_back({log(tmmcN[i-1][0])-log(tmmcN[i][2])});
 		}
 		else{
