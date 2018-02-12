@@ -39,10 +39,10 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 	if (sampleNo>tmmcNupstart){
 		for (int i=0;i<=Nmax;i+=1){
 			//tmmcRsum = tmmcC[i][0]+tmmcC[i][1]+tmmcC[i][2];
-			if (tmmcC(i,1)!=0){
-				tmmcN[i][0]=tmmcC[i][0]/tmmcC(i,1);
-				tmmcN[i][1]=tmmcC[i][1]/tmmcC(i,1);
-				tmmcN[i][2]=tmmcC[i][2]/tmmcC(i,1);
+			if (tmmcC[i][1]!=0){
+				tmmcN[i][0]=tmmcC[i][0]/tmmcC[i][1];
+				tmmcN[i][1]=tmmcC[i][1]/tmmcC[i][1);
+				tmmcN[i][2]=tmmcC[i][2]/tmmcC[i][1];
 			}
 		}
 
