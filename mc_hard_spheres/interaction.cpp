@@ -6,7 +6,7 @@ using namespace std;
 //distance and overlap checking
 vector<double> dist(vector<double> newp, vector<double> p){
   vector<double> dist ;
-  if (truncDist<bfactor/2){
+  if (truncDist<=bfactor/2){
     double deltax = abs(newp[0] - p[0]);
     double deltay = abs(newp[1] - p[1]);
     double deltaz = abs(newp[2] - p[2]);
