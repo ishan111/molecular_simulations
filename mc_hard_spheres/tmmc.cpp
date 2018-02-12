@@ -77,12 +77,16 @@ void tmmc_hist(){
 			tmmcC[i][2]=tmmcC[i][2]/tmmcC[i][1];
 
 
-			if (i>0) tmmcHist.push_back({log(tmmcN[i-1][0])-log(tmmcN[i][2])});
+			if (i>0) {
+				tmmcHist.push_back({log(tmmcN[i-1][0]/tmmcN[i][2])});
+				tmmcHist[i]=tmmcHist[i]+tmmcHist[i-1];
+			}
+			else tmmcHist.push_back({0});
 		}
 		/*else{
 			tmmcHist.push_back({0});
 		}*/
-		tmmcHist[i]=tmmcHist[i]+tmmcHist[i-1];
+
 		tmmcHist_data<<tmmcHist[i]<<endl;
 		tmmcHist_dataN<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
 		tmmcHist_dataC<<tmmcC[i][0]<<" "<<tmmcC[i][1]<<" "<<tmmcC[i][2]<<endl;
