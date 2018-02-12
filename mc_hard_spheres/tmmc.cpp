@@ -41,7 +41,7 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 			//tmmcRsum = tmmcC[i][0]+tmmcC[i][1]+tmmcC[i][2];
 			if (tmmcC[i][1]!=0){
 				tmmcN[i][0]=tmmcC[i][0]/tmmcC[i][1];
-				tmmcN[i][1]=tmmcC[i][1]/tmmcC[i][1);
+				tmmcN[i][1]=tmmcC[i][1]/tmmcC[i][1];
 				tmmcN[i][2]=tmmcC[i][2]/tmmcC[i][1];
 			}
 		}
@@ -72,12 +72,12 @@ void tmmc_hist(){
 	tmmcHist_dataN.open("tmmcN.dat");
 
 	for(int i=0;i<=Nmax;i+=1){
-		if (tmmcC[i-1][0]>0 && tmmcC[i][2]>0){
-			tmmcC[i][0]=tmmcC[i][0]/tmmcC[i][1];
-			tmmcC[i][2]=tmmcC[i][2]/tmmcC[i][1];
+		//if (tmmcC[i-1][0]>0 && tmmcC[i][2]>0){
+			/*tmmcN[i].push_back({tmmcC[i][0]/tmmcC[i][1],tmmcC[i][2]/tmmcC[i][1]});
 
 
-			if (i>0) {
+
+			if (i>0 && tmmcN[i-1][0]>0 && tmmcN[i][2] ) {
 				tmmcHist.push_back({log(tmmcN[i-1][0]/tmmcN[i][2])});
 				tmmcHist[i]=tmmcHist[i]+tmmcHist[i-1];
 			}
@@ -87,8 +87,8 @@ void tmmc_hist(){
 			tmmcHist.push_back({0});
 		}*/
 
-		tmmcHist_data<<tmmcHist[i]<<endl;
-		tmmcHist_dataN<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
+		//tmmcHist_data<<tmmcHist[i]<<endl;
+		//tmmcHist_dataN<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<endl;
 		tmmcHist_dataC<<tmmcC[i][0]<<" "<<tmmcC[i][1]<<" "<<tmmcC[i][2]<<endl;
 
 	}
