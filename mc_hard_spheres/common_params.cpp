@@ -60,13 +60,13 @@ int logging = 0;
 bool read_from_file = false;
 
 //TMMC parameters
-vector<vector<double>> tmmcC={{0,0,0}};
-vector<vector<double>> tmmcN={{0,0,0}};
+vector<vector<double>> tmmcC={{0,0,0,0}};
+vector<vector<double>> tmmcN={{0,0,0,0}};
 int Nmax=0;
 double tmmcRsum = 0 ;
 double bias = 1;
 bool inc = false ;
-vector<double> tmmcHist = {0};
+vector<vector<double>> tmmcHist = {{0,0}};
 
 int tmmcCupstart = 15000;
 int tmmcNupstart=29000;

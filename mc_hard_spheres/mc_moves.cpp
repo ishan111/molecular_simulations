@@ -17,8 +17,9 @@ void hard_displace(){
         sampEnergy = sampEnergy + e_new ;
 
         succ_disp += 1;
-        log_current_config(1);
+
     }
+    log_current_config(1);
 }
 
 void hard_exchange(){
@@ -55,9 +56,9 @@ void hard_exchange(){
                  sampEnergy = sampEnergy + e_new ;
 
                 succ_ins += 1;
-                log_current_config(2);
-            }
 
+            }
+log_current_config(2);
         inc = false ;
 
     }
@@ -88,8 +89,9 @@ void hard_exchange(){
           N-=1;
           sampEnergy = sampEnergy + e_new ;
           succ_del += 1;
-          log_current_config(3);
+
         }
+        log_current_config(3);
       }
     }
 }

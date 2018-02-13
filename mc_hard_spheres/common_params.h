@@ -65,7 +65,7 @@ extern bool read_from_file;
 //TMMC parameters
 extern vector<vector<double>> tmmcC;
 extern vector<vector<double>> tmmcN;
-extern vector<double> tmmcHist;
+extern vector<vector<double>> tmmcHist;
 extern int Nmax;
 extern double tmmcRsum ;
 extern bool inc ;

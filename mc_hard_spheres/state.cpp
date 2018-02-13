@@ -23,8 +23,8 @@ void collect(){
     cout << "Finished reading. Updated particle list with " << particles.size() << " particles." << endl;
     Nmax = N ;
     for(int i=1;i<N+1;i++){
-      tmmcN.push_back({0,0,0});
-      tmmcC.push_back({0,0,0});
+      tmmcN.push_back({i,0,0,0});
+      tmmcC.push_back({i,0,0,0});
     }
     state_file.close();
 }
