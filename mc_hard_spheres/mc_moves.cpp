@@ -50,7 +50,7 @@ void hard_exchange(){
           /*  if(ranf() >= biasedArg){
                 cout << "Rejected by rule: " << ranf() << " " << arg << endl;
             }*/
-            if(log(ranf()) < biasedArg) { //acceptance condition
+            if(log(ranf()) < biasedArg && N < Nulim) { //acceptance condition
                 particles.push_back(newp);
                  N+=1;
                  sampEnergy = sampEnergy + e_new ;
@@ -82,7 +82,7 @@ log_current_config(2);
         }
 
 
-        if(log(ranf()) < biasedArg){ //acceptance condition
+        if(log(ranf()) < biasedArg && N >Nllim){ //acceptance condition
 
 
           particles.erase(particles.begin() + p);

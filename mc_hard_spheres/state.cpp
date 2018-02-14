@@ -12,7 +12,14 @@ void save(){
 
 void collect(){
     ifstream state_file;
+    //if tmmc read in ON
+    ifstream tmmcC_file;
     state_file.open("particles.state");
+
+    if (read_tm_from_file == true){
+      tmmcC_file.open("tmmcC.dat");
+    }
+
     state_file >> N;
     cout << "Reading in " << N << " particles from state file." << endl;
     for(int i = 0; i < N; i++){
@@ -22,9 +29,29 @@ void collect(){
     }
     cout << "Finished reading. Updated particle list with " << particles.size() << " particles." << endl;
     Nmax = N ;
-    for(int i=1;i<N+1;i++){
-      tmmcN.push_back({i,0,0,0});
-      tmmcC.push_back({i,0,0,0});
+    if(read_tm_from_file == true){
+
     }
+    if (read_tm_from_file == false){
+    for(int i=1;i<=N;i++){
+      tmmcN.push_back({(double) i,0,0,0});
+      tmmcC.push_back({(double) i,0,0,0});
+    }
+  }
+  else{
+    tmmcC_file >> Nmax ;
+    for(int i = 0; i<=Nmax; i++){
+      vector<double> tmRow(4);
+      tmmcC_file >> tmRow[0] >> tmRow[1] >> tmRow[2] >> tmRow[3];
+      tmmcC.push_back(tmRow);
+     tmmcN.push_back({(double) i,0,0,0});
+    //  tmmcC.push_back({(double) i,0,0,0});
+
+    }
+  }
     state_file.close();
+
+    if (read_tm_from_file == true){
+      tmmcC_file.close();
+    }
 }

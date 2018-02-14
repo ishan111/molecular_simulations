@@ -19,6 +19,8 @@ double truncDist = 4 ;
 double bfactor = 0;
 double L = 0;
 int N = 0;
+int Nulim=0;
+int Nllim=400;
 bool periodic = true;
 int ncycles = 0;
 int samp_ival = 0;
@@ -73,6 +75,7 @@ int tmmcNupstart=29000;
 int tmmcBiasStart=30000;
 bool tmmcBias = true;
 bool tmmcSamp = true;
+bool read_tm_from_file = false;
 
 
 int biasStart;

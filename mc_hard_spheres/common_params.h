@@ -21,12 +21,15 @@ extern double truncDist;
 extern double bfactor; //box scaling factor
 extern double L; //box dimension
 extern int N; //no of particles
+extern int Nulim;//N upper limit
+extern int Nllim;//N lower limit
 extern bool periodic; //periodic boundary conditions, enabled by default
 extern int ncycles;
 extern int samp_ival; //interval for sampling averages
 extern double delta;
 extern double zz; //activity, exp(beta*mu)/lambda^3
 extern double T ; // temperature
+
 
 //Optimization: Cell list
 extern int ncells; //number of cells per dimension (user-specified)
@@ -75,7 +78,7 @@ extern int tmmcNupstart;
 extern int tmmcBiasStart;
 extern bool tmmcBias;
 extern bool tmmcSamp;
-
+extern bool read_tm_from_file;
 
 extern int sampleNo;
 

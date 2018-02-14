@@ -27,18 +27,24 @@ magnitude of attempted displacement (delta)
 logging (0 = off, 1 = on)
 1
 read state from file (0 = false, 1 = true)
-0
+1
 uses tmmc? (0 = false, 1 = true)
 1
 uses tmmc for Bias (0 = false, 1 = true)
 0
 tmmc Collection start at iteration:
-100000
+100
 tmmc Normalized start at iteration:
-200000
+200
 tmmc Bias Start  at iteration:
-500000
+500
 Temperature
 1.2
 interaction truncation distance
 4
+lower limit of N
+6
+upper limit of N
+10
+read TM from file
+0

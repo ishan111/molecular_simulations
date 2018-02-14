@@ -18,8 +18,8 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 	if (inc){
 		if( Nmax<N+1){
 			Nmax=N+1;
-			tmmcC.push_back({Nmax,0,0,0});
-			tmmcN.push_back({Nmax,0,0,0});
+			tmmcC.push_back({(double) Nmax,0,0,0});
+			tmmcN.push_back({(double) Nmax,0,0,0});
 		}
 		if (sampleNo> tmmcCupstart){
 			accProbExp = exp(accProb);
@@ -71,25 +71,25 @@ void tmmc_hist(){
 	tmmcHist_data.open("tmmc.dat");
 	tmmcHist_dataC.open("tmmcC.dat");
 	tmmcHist_dataN.open("tmmcN.dat");
-
-	for(int i=0;i<Nmax;i+=1){
+	tmmcHist_dataC<<Nmax<<endl;
+	for(int i=0;i<=Nmax;i+=1){
 
 		tmmcHist_dataC<<tmmcC[i][0]<<" "<<tmmcC[i][1]<<" "<<tmmcC[i][2]<<" "<<tmmcC[i][3]<<endl;
 		tmmcHist_dataN<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<" "<<tmmcN[i][3]<<endl;
+		if (i<Nmax){
+			if (tmmcN[i][1]>0 && tmmcN[i+1][3]>0 ) {
+				tmmcHist.push_back({tmmcN[i+1][0],log(tmmcN[i][1]/tmmcN[i+1][3])});
 
-		if (tmmcN[i][1]>0 && tmmcN[i+1][3]>0 ) {
-			tmmcHist.push_back({tmmcN[i+1][0],log(tmmcN[i][1]/tmmcN[i+1][3])});
 
 
+			}
+			else {
+				tmmcHist.push_back({0,0});
+			}
 
+			tmmcHist[i+1][1]=tmmcHist[i+1][1]+tmmcHist[i][1];
+			tmmcHist_data<<tmmcHist[i][0]<<" "<<tmmcHist[i][1]<<endl;
 		}
-		else {
-			tmmcHist.push_back({0,0});
-		}
-
-		tmmcHist[i+1][1]=tmmcHist[i+1][1]+tmmcHist[i][1];
-		tmmcHist_data<<tmmcHist[i][0]<<" "<<tmmcHist[i][1]<<endl;
-
 	}
 	tmmcHist_data.close();
 	tmmcHist_dataN.close();
