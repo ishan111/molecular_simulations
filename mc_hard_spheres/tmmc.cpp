@@ -72,24 +72,33 @@ void tmmc_hist(){
 	tmmcHist_dataC.open("tmmcC.dat");
 	tmmcHist_dataN.open("tmmcN.dat");
 	tmmcHist_dataC<<Nmax<<endl;
+	//tmmcHist.push_back({tmmcC[0][0],0});
 	for(int i=0;i<=Nmax;i+=1){
 
 		tmmcHist_dataC<<tmmcC[i][0]<<" "<<tmmcC[i][1]<<" "<<tmmcC[i][2]<<" "<<tmmcC[i][3]<<endl;
 		tmmcHist_dataN<<tmmcN[i][0]<<" "<<tmmcN[i][1]<<" "<<tmmcN[i][2]<<" "<<tmmcN[i][3]<<endl;
-		if (i<Nmax){
-			if (tmmcN[i][1]>0 && tmmcN[i+1][3]>0 ) {
-				tmmcHist.push_back({tmmcN[i+1][0],log(tmmcN[i][1]/tmmcN[i+1][3])});
 
+		if (i>0) {
+			if (tmmcN[i-1][1]>0 && tmmcN[i][3]>0 ) {
+
+				tmmcHist.push_back({tmmcN[i][0],log(tmmcN[i-1][1]/tmmcN[i][3])});
+			}
+			else{
+				tmmcHist.push_back({tmmcN[i][0],0});
 
 
 			}
-			else {
-				tmmcHist.push_back({0,0});
-			}
+			tmmcHist[i][1]=tmmcHist[i][1]+tmmcHist[i-1][1];
 
-			tmmcHist[i+1][1]=tmmcHist[i+1][1]+tmmcHist[i][1];
-			tmmcHist_data<<tmmcHist[i][0]<<" "<<tmmcHist[i][1]<<endl;
 		}
+
+
+		tmmcHist_data<<tmmcHist[i][0]<<" "<<tmmcHist[i][1]<<endl;
+
+
+
+
+
 	}
 	tmmcHist_data.close();
 	tmmcHist_dataN.close();

@@ -33,18 +33,31 @@ void collect(){
 
     }
     if (read_tm_from_file == false){
-    for(int i=1;i<=N;i++){
+    for(int i=1;i<=Nmax;i++){
       tmmcN.push_back({(double) i,0,0,0});
       tmmcC.push_back({(double) i,0,0,0});
     }
   }
   else{
     tmmcC_file >> Nmax ;
+
     for(int i = 0; i<=Nmax; i++){
       vector<double> tmRow(4);
-      tmmcC_file >> tmRow[0] >> tmRow[1] >> tmRow[2] >> tmRow[3];
-      tmmcC.push_back(tmRow);
-     tmmcN.push_back({(double) i,0,0,0});
+    /*  if (i==0) {
+        tmmcC_file >> tmRow[0] >> tmRow[1] >> tmRow[2] >> tmRow[3];
+        tmmcC[0][0]=tmRow[0];
+        tmmcC[0][1]=tmRow[1];
+        tmmcC[0][0]=tmRow[0];
+        tmmcC[0][0]=tmRow[0];
+      //  tmmcN.push_back({(double) i,0,0,0});
+      }
+      else*/ if (i>0) {
+        tmmcC_file >> tmRow[0] >> tmRow[1] >> tmRow[2] >> tmRow[3];
+        tmmcC.push_back(tmRow);
+        tmmcN.push_back({(double) i,0,0,0});
+      }
+
+
     //  tmmcC.push_back({(double) i,0,0,0});
 
     }
