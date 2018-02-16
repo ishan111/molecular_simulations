@@ -36,7 +36,7 @@ void hard_exchange(){
       double arg = log(pow(L,3)) + log(zz) - log(N+1) - e_new/T ;
       double biasedArg ;
       double bias = 1 ;
-      if (tmmcBias == true & sampleNo>tmmcBiasStart){
+      if (tmmcSamp==true && tmmcBias == true && sampleNo>tmmcBiasStart){
         bias = tmmc_bias(inc);
       }
       else{
@@ -69,7 +69,7 @@ log_current_config(2);
       if(N>1) {
         int p = ceil(ranf() * N)-1;
         double e_new = energy_hard_remove(p); //energy on inserting newp
-        if (tmmcSamp==true & tmmcBias == true & sampleNo>tmmcBiasStart){
+        if (tmmcSamp==true && tmmcBias == true && sampleNo>tmmcBiasStart){
           bias = tmmc_bias(inc);
         }
         else{
