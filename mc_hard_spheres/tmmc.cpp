@@ -52,7 +52,7 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 
 double tmmc_bias(bool inc){
 	double bias = 0;
-	if(inc){
+	if(inc==true){
 
 		if (N+1 <= Nmax && tmmcN[N][1] > 0 && tmmcN[N+1][3] > 0 ) {
 			bias = log(tmmcN[N+1][3])-log(tmmcN[N][1]);
