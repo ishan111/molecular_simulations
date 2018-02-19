@@ -56,7 +56,7 @@ int rmax_factor;
 int dr_factor;
 
 //Logging
-int logging = 0;
+bool logging = 0;
 
 //Resume from state
 bool read_from_file = false;
@@ -66,7 +66,7 @@ vector<vector<double>> tmmcC={{0,0,0,0}};
 vector<vector<double>> tmmcN={{0,0,0,0}};
 int Nmax=0;
 double tmmcRsum = 0 ;
-double bias = 1;
+double bias = 0;
 bool inc = false ;
 vector<vector<double>> tmmcHist = {{0,0}};
 

@@ -11,7 +11,7 @@ cell list divisions per dimension (cell_list_div)
 periodic boundary conditions
 1
 number of cycles (ncycles)
-1000
+1000000
 sampling interval (samp_ival)
 5000
 activity (zz = exp(beta*mu)/lambda^3)
@@ -33,11 +33,11 @@ uses tmmc? (0 = false, 1 = true)
 uses tmmc for Bias (0 = false, 1 = true)
 0
 tmmc Collection start at iteration:
-100
+100000
 tmmc Normalized start at iteration:
-200
+200000
 tmmc Bias Start  at iteration:
-500
+210000
 Temperature
 1.2
 interaction truncation distance
