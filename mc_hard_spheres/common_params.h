@@ -60,7 +60,7 @@ extern int rmax_factor;
 extern int dr_factor;
 
 //Logging
-extern int logging; //off by default
+extern bool logging; //off by default
 
 //Resume from state
 extern bool read_from_file;

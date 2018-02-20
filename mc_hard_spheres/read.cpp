@@ -23,7 +23,7 @@ void read(){
     delta = stod(input[10]);
     rmax_factor = stoi(input[11]);
     dr_factor = stoi(input[12]);
-    logging = stoi(input[13]);
+    logging = (bool) stoi(input[13]);
     read_from_file = (bool) stoi(input[14]);
     tmmcSamp = (bool) stoi(input[15]);
     tmmcBias = (bool) stoi(input[16]);

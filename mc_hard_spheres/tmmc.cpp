@@ -36,12 +36,12 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 			tmmcC[N][2] = tmmcC[N][2] + 1  ;
 		}
 	}
-	if (sampleNo>tmmcNupstart){
+	if (sampleNo>tmmcNupstart && sampleNo % samp_ival == 0){
 		for (int i=0;i<=Nmax;i+=1){
 			//tmmcRsum = tmmcC[i][0]+tmmcC[i][1]+tmmcC[i][2];
 			if (tmmcC[i][2]!=0){
 				tmmcN[i][1]=tmmcC[i][1]/tmmcC[i][2];
-//				tmmcN[i][2]=tmmcC[i][2]/tmmcC[i][2];
+//			tmmcN[i][2]=tmmcC[i][2]/tmmcC[i][2];
 				tmmcN[i][3]=tmmcC[i][3]/tmmcC[i][2];
 			}
 		}
@@ -52,17 +52,29 @@ void tmmc_update(double accProb,bool inc,bool UpdateNorm){
 
 double tmmc_bias(bool inc){
 	double bias = 0;
-	if(inc){
+	if(inc==true){
 
-		if (N+1 <= Nmax && tmmcN[N][1] > 0 && tmmcN[N+1][3] > 0 ) {
-			bias = log(tmmcN[N+1][3])-log(tmmcN[N][1]);
+		if (N+1 < Nmax) {
+			if(tmmcN[N][1] > 0 && tmmcN[N+1][3] > 0 ) {
+				bias = log(tmmcN[N+1][3])-log(tmmcN[N][1]);
+				//bias = -bias ;
+			}
+			/*else {
+				bias = 100000000;
+			}*/
+
 		}
 	}
 	else{
-		if (N!=0 && tmmcN[N][3]>0  && tmmcN[N-1][1]>0 ){
+		if (N > 0){
+			if (tmmcN[N][3] > 0  && tmmcN[N-1][1] > 0 ){
 			bias = log(tmmcN[N-1][1])-log(tmmcN[N][3]);
+//bias = -bias ;
 		}
-
+/*else {
+	bias = 100000000;
+}*/
+}
 	}
 	return bias ;
 }

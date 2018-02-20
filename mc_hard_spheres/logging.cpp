@@ -30,41 +30,44 @@ void log_init(){
     hgram_data.open("gcmc.hist"); //data for histogram
     energy_samp.open("energySamp.dat");
     N_samp.open("Nsamp.dat");
-}
+  }
 
-void log_current_config(int move_type){
+  void log_current_config(int move_type){
     if(logging == 1){
-        string smtype;
-        switch(move_type){
-            case 0:
-                smtype = "INIT";
-                break;
-            case 1:
-                smtype = "DISPLACE";
-                break;
-            case 2:
-                smtype = "INSERT";
-                break;
-            case 3:
-                smtype = "REMOVE";
-                break;
-            default:
-                smtype = "NO MOVE";
-                break;
-        }
-       /* cout << "[[ Move type: " << smtype << "; Time elapsed since start: " << (clock() - start)/CLOCKS_PER_SEC << " ]]" << endl;*/
-		for(vector<vector<double> >::iterator it = particles.begin(); it < particles.end(); it++){
-            config_log << (*it)[0] << " " << (*it)[1] << " " << (*it)[2] << endl;
-        }
-        config_log << "[[ No. of particles = " << N << " ]]" << endl;
-        config_log << endl;
+      string smtype;
+      switch(move_type){
+        case 0:
+        smtype = "INIT";
+        break;
+        case 1:
+        smtype = "DISPLACE";
+        break;
+        case 2:
+        smtype = "INSERT";
+        break;
+        case 3:
+        smtype = "REMOVE";
+        break;
+        default:
+        smtype = "NO MOVE";
+        break;
+      }
+      /* cout << "[[ Move type: " << smtype << "; Time elapsed since start: " << (clock() - start)/CLOCKS_PER_SEC << " ]]" << endl;*/
+      for(vector<vector<double> >::iterator it = particles.begin(); it < particles.end(); it++){
+        config_log << (*it)[0] << " " << (*it)[1] << " " << (*it)[2] << endl;
+      }
+      config_log << "[[ No. of particles = " << N << " ]]" << endl;
+      config_log << endl;
+      energy_samp << sampEnergy << endl ;
+      N_samp << N << endl ;
     }
-    npart.push_back(N);
-    energy_samp << sampEnergy << endl ;
-    N_samp << N << endl ;
-}
 
-void log_histogram(){
+    npart.push_back(N);
+
+
+  }
+
+  void log_histogram(){
     for(int i = 0; i < npart.size(); i++){
         hgram[npart[i]] += 1;
     }
