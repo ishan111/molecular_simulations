@@ -60,10 +60,24 @@ void log_init(){
       config_log << endl;
       energy_samp << sampEnergy << endl ;
       N_samp << N << endl ;
+
     }
 
     npart.push_back(N);
-
+    if (sampleNo%10000==0 ){
+      cout<<"Progress: "<<"[";
+      double percent_complete=100*sampleNo/ncycles;
+      int dash_no = (int) (30*sampleNo/ncycles);
+      for(int i=1;i<=30;i+=1){
+        if (i<=dash_no){
+          cout<<"=";
+        }
+        else{
+          cout<<" ";
+        }
+      }
+      cout<<"]"<<" "<<percent_complete<<" %%"<<endl;
+    }
 
   }
 
