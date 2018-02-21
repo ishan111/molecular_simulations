@@ -64,11 +64,12 @@ void log_init(){
     }
 
     npart.push_back(N);
-    if (sampleNo%10000==0 ){
+    if (sampleNo%1000==0 ){
+      //cout.precision(4);
       cout<<"Progress: "<<"[";
-      double percent_complete=100*sampleNo/ncycles;
-      int dash_no = (int) (30*sampleNo/ncycles);
-      for(int i=1;i<=30;i+=1){
+      double percent_complete=100*(double)sampleNo/(double)ncycles;
+      int dash_no = (int) (60*sampleNo/ncycles);
+      for(int i=1;i<=60;i+=1){
         if (i<=dash_no){
           cout<<"=";
         }
@@ -76,7 +77,7 @@ void log_init(){
           cout<<" ";
         }
       }
-      cout<<"]"<<" "<<percent_complete<<" %%"<<endl;
+      cout<<"]"<<" "<< std::setprecision(2)<< std::fixed <<percent_complete<<" %"<<"\r"<<std::flush;
     }
 
   }
