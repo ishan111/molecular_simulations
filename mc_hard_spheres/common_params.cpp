@@ -62,13 +62,13 @@ bool logging = 0;
 bool read_from_file = false;
 
 //TMMC parameters
-vector<vector<double>> tmmcC={{0,0,0,0}};
-vector<vector<double>> tmmcN={{0,0,0,0}};
-int Nmax=0;
+vector<vector<vector<double>>> tmmcC={{0,0,0,0,0,0,0,0,0}};
+vector<vector<vector<double>>> tmmcN={{0,0,0,0,0,0,0,0,0}};
+vector<int> Nmax={0 0};
 double tmmcRsum = 0 ;
 double bias = 0;
 bool inc = false ;
-vector<vector<double>> tmmcHist = {{0,0}};
+vector<vector<double>> tmmcHist = {{0,0,0}};
 
 int tmmcCupstart = 15000;
 int tmmcNupstart=29000;
@@ -76,6 +76,17 @@ int tmmcBiasStart=30000;
 bool tmmcBias = true;
 bool tmmcSamp = true;
 bool read_tm_from_file = false;
+
+//tmmc 2D stuff
+vector<int> Ninit ={0,0} ;
+vector<int> Nfin ={0,0} ;
+//int N2 = 0;
+//int Nmax=0;
+//int N2max=0;
+vector<vector<double>> bin_dimes;
+int transition = 0;
+int revTransition = 0;
+
 
 
 int biasStart;

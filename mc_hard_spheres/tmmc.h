@@ -17,6 +17,8 @@ void tmmc_update(double,bool,bool);
 
 double tmmc_bias(bool);
 
+bool is_in_bin(int);
+
 void tmmc_hist();
 
 #endif /* TMMC_H_ */

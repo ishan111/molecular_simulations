@@ -29,9 +29,9 @@ void collect(){
     }
     cout << "Finished reading. Updated particle list with " << particles.size() << " particles." << endl;
     Nmax = N ;
-    if(read_tm_from_file == true){
+    /*if(read_tm_from_file == true){
 
-    }
+    }*/
     if (read_tm_from_file == false){
     for(int i=1;i<=Nmax;i++){
       tmmcN.push_back({(double) i,0,0,0});
