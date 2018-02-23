@@ -13,12 +13,12 @@
 #include <iostream>
 #include <vector>
 //#include <math>
-void tmmc_update(double)
+void tmmc_update(double);
 
-double tmmc_bias(bool);
+double tmmc_bias();
 
 bool is_in_bin(int,vector<double>);
-bool updateNbin( vector<double>,vector<double>,bool);
+bool updateNbin( vector<double>,vector<double>);
 void trans_sel();
 void tmmc_hist();
 

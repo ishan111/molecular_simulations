@@ -28,15 +28,15 @@ void collect(){
       particles.push_back(newp);
 
 // N bin Initialize
-      if(newp[0]>bin_dimes[0][0][0] && newp[0]<bin_dimes[0][1][0] &&...
-        newp[1]>bin_dimes[0][0][1] && newp[1]<bin_dimes[0][1][1] &&...
+      if(newp[0]>bin_dimes[0][0][0] && newp[0]<bin_dimes[0][1][0] &&
+        newp[1]>bin_dimes[0][0][1] && newp[1]<bin_dimes[0][1][1] &&
         newp[2]>bin_dimes[0][0][2] && newp[0]<bin_dimes[0][1][2]){
 
           Ninit[0]=Ninit[0]+1;
 
 
-        }else if (newp[0]>bin_dimes[1][0][0] && newp[0]<bin_dimes[1][1][0] &&...
-          newp[1]>bin_dimes[1][0][1] && newp[1]<bin_dimes[1][1][1] &&...
+        }else if (newp[0]>bin_dimes[1][0][0] && newp[0]<bin_dimes[1][1][0] &&
+          newp[1]>bin_dimes[1][0][1] && newp[1]<bin_dimes[1][1][1] &&
           newp[2]>bin_dimes[1][0][2] && newp[0]<bin_dimes[1][1][2]){
 
             Ninit[1]=Ninit[1]+1;
@@ -46,7 +46,7 @@ void collect(){
         }
 
     cout << "Finished reading. Updated particle list with " << particles.size() << " particles." << endl;
-    Nmax = N ;
+    
 
   //tm initialize maybe
 
@@ -60,7 +60,7 @@ void collect(){
     for (int j=0;j<=Nmax[1];j+=1){
       tmmcN[i][j].reserve(9);
       tmmcC[i][j].reserve(9);
-      tmmcHist[i][j].reserve(9);
+      tmmcHist[i][j].reserve(3);
     }
   }
   for (int i=0;i<=Nmax[0];i+=1){

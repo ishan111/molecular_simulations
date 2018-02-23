@@ -68,7 +68,7 @@ extern bool read_from_file;
 //TMMC parameters
 extern vector<vector<vector<double>>> tmmcC;
 extern vector<vector<vector<double>>> tmmcN;
-extern vector<vector<double>> tmmcHist;
+extern vector<vector<vector<double>>> tmmcHist;
 extern vector<int> Nmax;
 extern double tmmcRsum ;
 extern bool inc ;
@@ -86,7 +86,7 @@ extern vector<int> Nfin  ;
 //int N2 = 0;
 //int Nmax=0;
 //int N2max=0;
-extern double[2][2][3] bin_dimes;
+extern double bin_dimes[2][2][3];
 extern int transition ;
 extern int revTransition ;
 

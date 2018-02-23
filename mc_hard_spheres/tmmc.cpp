@@ -37,7 +37,7 @@ void tmmc_update(double accProb){
 				//tmmcRsum = tmmcC[i][0]+tmmcC[i][1]+tmmcC[i][2];
 				if (tmmcC[i][j][8]!=0){
 					for(int k=2;k<=7;k+=1){
-						tmmcN[i][k]=tmmcC[i][k]/tmmcC[i][8];
+						tmmcN[i][j][k]=tmmcC[i][j][k]/tmmcC[i][j][8];
 						//			tmmcN[i][2]=tmmcC[i][2]/tmmcC[i][2];
 						//tmmcN[i][3]=tmmcC[i][3]/tmmcC[i][2];
 					}
@@ -69,11 +69,12 @@ void tmmc_hist(){
 	tmmcHist_data.open("tmmc.dat");
 	tmmcHist_dataC.open("tmmcC.dat");
 	tmmcHist_dataN.open("tmmcN.dat");
-	tmmcHist_dataC<<Nmax<<endl;
+	tmmcHist_dataC<<Nmax[0]<<endl;
+	tmmcHist_dataC<<Nmax[1]<<endl;
 	//tmmcHist.push_back({tmmcC[0][0],0});
 	for(int i=0;i<=Nmax[0];i+=1){
 		for(int j=0;j<=Nmax[0];j+=1){
-			for (k=0;k<=8;k+=1){
+			for (int k=0;k<=8;k+=1){
 				tmmcHist_dataC<<tmmcC[i][j][k]<<" " ;
 				tmmcHist_dataN<<tmmcN[i][j][k]<<" " ;
 				if (k==8){
@@ -90,10 +91,10 @@ void tmmc_hist(){
 			if (j>0) {
 				if (tmmcN[i][j-1][4]>0 && tmmcN[i][j][5]>0 ) {
 
-					tmmcHist.push_back({tmmcN[i][j][0],tmmcN[i][j][1],log(tmmcN[i][j-1][4]/tmmcN[i][j][5])});
+					tmmcHist[i][j][2]=log(tmmcN[i][j-1][4]/tmmcN[i][j][5]);
 				}
 				else{
-					tmmcHist.push_back({tmmcN[i][j][0],tmmcN[i][j][1],0});
+					tmmcHist[i][j][2] = 0;
 
 
 				}
@@ -104,10 +105,10 @@ void tmmc_hist(){
 				if (i>0) {
 					if (tmmcN[i-1][j][2]>0 && tmmcN[i][j][3]>0 ) {
 
-						tmmcHist.push_back({tmmcN[i][j][0],tmmcN[i][j][1],log(tmmcN[i-1][j][2]/tmmcN[i][j][3])});
+						tmmcHist[i][j][2] = log(tmmcN[i-1][j][2]/tmmcN[i][j][3]);
 					}
 					else{
-						tmmcHist.push_back({tmmcN[i][j][0],tmmcN[i][j][1],0});
+						tmmcHist[i][j][2] = 0 ;
 
 
 					}
@@ -132,14 +133,14 @@ void tmmc_hist(){
 
 bool is_in_bin(int binNo, vector<double> particle){
 	bool is_in_bin = 0;
-	if	(particle[0]>bin_dimes[binNo][0][0] && particle[1]>bin_dimes[binNo][0][1] && particle[2]>bin_dimes[binNo][0][2] && particle[0]<bin_dimes[binNo][1][0] &&...
+	if	(particle[0]>bin_dimes[binNo][0][0] && particle[1]>bin_dimes[binNo][0][1] && particle[2]>bin_dimes[binNo][0][2] && particle[0]<bin_dimes[binNo][1][0] &&
 		particle[1]<bin_dimes[binNo][1][1] && particle[2]<bin_dimes[binNo][1][2] ){
 			is_in_bin = 1 ;
 		}
 		return is_in_bin ;
 	}
 
-	bool updateNbin( vector<double> particle_old_pos,vector<double> particle_new_pos, bool inc){
+	bool updateNbin( vector<double> particle_old_pos,vector<double> particle_new_pos){
 
 
 
