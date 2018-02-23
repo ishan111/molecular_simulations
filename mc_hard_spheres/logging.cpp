@@ -63,6 +63,21 @@ void log_init(){
     }
 
     npart.push_back(N);
+    if (sampleNo%1000==0 ){
+      //cout.precision(4);
+      cout<<"Progress: "<<"[";
+      double percent_complete=100*(double)sampleNo/(double)ncycles;
+      int dash_no = (int) (60*sampleNo/ncycles);
+      for(int i=1;i<=60;i+=1){
+        if (i<=dash_no){
+          cout<<"=";
+        }
+        else{
+          cout<<" ";
+        }
+      }
+      cout<<"]"<<" "<< std::setprecision(2)<< std::fixed <<percent_complete<<" %"<<"\r"<<std::flush;
+    }
 
 
   }

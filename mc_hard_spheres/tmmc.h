@@ -1,9 +1,9 @@
 /*
- * tmmc.h
- *
- *  Created on: 19-Nov-2017
- *      Author: ishan
- */
+* tmmc.h
+*
+*  Created on: 19-Nov-2017
+*      Author: ishan
+*/
 
 #ifndef TMMC_H_
 #define TMMC_H_
@@ -13,12 +13,13 @@
 #include <iostream>
 #include <vector>
 //#include <math>
-void tmmc_update(double,bool,bool);
+void tmmc_update(double)
 
 double tmmc_bias(bool);
 
-bool is_in_bin(int);
-
+bool is_in_bin(int,vector<double>);
+bool updateNbin( vector<double>,vector<double>,bool);
+void trans_sel();
 void tmmc_hist();
 
 #endif /* TMMC_H_ */

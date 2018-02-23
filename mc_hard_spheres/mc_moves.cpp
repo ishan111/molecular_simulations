@@ -9,8 +9,24 @@ void hard_displace(){
     vector<double> newp = {particles[p][0] + (ranf()-0.5)*2*delta, particles[p][1] + (ranf()-0.5)*2*delta, particles[p][2] + (ranf()-0.5)*2*delta};
     newp = {fmod(newp[0] + L, L), fmod(newp[1] + L, L), fmod(newp[2] + L, L)}; //prevent overflow
 
+    updateNbin( particles[p],newp);
+
     double e_new = energy_hard_displace(newp,p); //energy on displacing p to newp
     double arg = -e_new/T;
+
+    double biasedArg ;
+    double bias = 0 ;
+    if (tmmcBias == 1 && sampleNo>tmmcBiasStart){
+      bias = tmmc_bias();
+    }
+    else{
+      bias = 0;
+    }
+    if(tmmcSamp==1){
+      tmmc_update(arg);
+    }
+
+          biasedArg = bias + arg ;
     if(log(ranf())<=arg){
 
         particles[p] = newp;
@@ -30,6 +46,8 @@ void hard_exchange(){
 
       vector<double> newp = {ranf()*L, ranf()*L, ranf()*L};
 
+      updateNbin( {L+1,L+1,L+1},newp);
+
       double e_new = energy_hard_insert(newp); //energy on inserting newp
 
 
@@ -37,13 +55,13 @@ void hard_exchange(){
       double biasedArg ;
       double bias = 0 ;
       if (tmmcBias == 1 && sampleNo>tmmcBiasStart){
-        bias = tmmc_bias(inc);
+        bias = tmmc_bias();
       }
       else{
         bias = 0;
       }
       if(tmmcSamp==1){
-        tmmc_update(arg,inc,1);
+        tmmc_update(arg);
       }
 
             biasedArg = bias + arg ;
@@ -68,9 +86,10 @@ log_current_config(2);
       att_del += 1;
       if(N>1) {
         int p = ceil(ranf() * N)-1;
+        updateNbin( particles[p],{L+1,L+1,L+1});
         double e_new = energy_hard_remove(p); //energy on inserting newp
         if (tmmcBias == 1 && sampleNo>tmmcBiasStart){
-          bias = tmmc_bias(inc);
+          bias = tmmc_bias();
         }
         else{
           bias = 0;
@@ -78,7 +97,7 @@ log_current_config(2);
         double arg = log(N)-log(pow(L,3)) -log(zz)-e_new/T ;
         biasedArg = bias + arg ;
         if (tmmcSamp==true){
-          tmmc_update(arg,inc,true);
+          tmmc_update(arg);
         }
 
 

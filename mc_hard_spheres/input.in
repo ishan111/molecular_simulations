@@ -49,25 +49,30 @@ upper limit of N
 read TM from file
 0
 dimensions of bin A:xl
-
+1
 yl:
-
+1
 zl:
-
+1
 xh:
-
+4
 yh:
-
+4
 zh:
-
+4
 dimensions of bin B:xl
-
+5
 yl:
-
+5
 zl:
-
+5
 xh:
-
+8
 yh:
-
+8
 zh:
+8
+Nmax of bin A:
+60
+Nmax of bin B:
+60

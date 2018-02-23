@@ -1,7 +1,7 @@
 #include "read.h"
 
 void read(){
-    int nparams = 25;
+    int nparams = 37;
     string comment[nparams];
     string input[nparams];
 
@@ -35,5 +35,20 @@ void read(){
     Nllim = stoi(input[22]);
     Nulim = stoi(input[23]);
     read_tm_from_file = (bool) stoi(input[24]);
+    bin_dimes[0][0][0]=stod(input[25]);
+    bin_dimes[0][0][1]=stod(input[26]);
+    bin_dimes[0][0][2]=stod(input[27]);
+    bin_dimes[0][1][0]=stod(input[28]);
+    bin_dimes[0][1][1]=stod(input[29]);
+    bin_dimes[0][1][2]=stod(input[30]);
+    bin_dimes[1][0][0]=stod(input[31]);
+    bin_dimes[1][0][1]=stod(input[32]);
+    bin_dimes[1][0][2]=stod(input[33]);
+    bin_dimes[1][1][0]=stod(input[34]);
+    bin_dimes[1][1][1]=stod(input[35]);
+    bin_dimes[1][1][2]=stod(input[36]);
+    Nmax[0]=stod(input[37]);
+    Nmax[1]=stod(input[38]);
+
     L = bfactor * sigma;
 }

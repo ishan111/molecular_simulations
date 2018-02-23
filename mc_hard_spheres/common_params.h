@@ -66,10 +66,10 @@ extern bool logging; //off by default
 extern bool read_from_file;
 
 //TMMC parameters
-extern vector<vector<double>> tmmcC;
-extern vector<vector<double>> tmmcN;
+extern vector<vector<vector<double>>> tmmcC;
+extern vector<vector<vector<double>>> tmmcN;
 extern vector<vector<double>> tmmcHist;
-extern int Nmax;
+extern vector<int> Nmax;
 extern double tmmcRsum ;
 extern bool inc ;
 
@@ -79,6 +79,16 @@ extern int tmmcBiasStart;
 extern bool tmmcBias;
 extern bool tmmcSamp;
 extern bool read_tm_from_file;
+
+//tmmc 2D stuff
+extern vector<int> Ninit  ;
+extern vector<int> Nfin  ;
+//int N2 = 0;
+//int Nmax=0;
+//int N2max=0;
+extern double[2][2][3] bin_dimes;
+extern int transition ;
+extern int revTransition ;
 
 extern int sampleNo;
 
