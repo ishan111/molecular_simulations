@@ -1,7 +1,7 @@
 #include "read.h"
 
 void read(){
-    int nparams = 37;
+    int nparams = 39;
     string comment[nparams];
     string input[nparams];
 
@@ -47,8 +47,10 @@ void read(){
     bin_dimes[1][1][0]=stod(input[34]);
     bin_dimes[1][1][1]=stod(input[35]);
     bin_dimes[1][1][2]=stod(input[36]);
-    Nmax[0]=stod(input[37]);
-    Nmax[1]=stod(input[38]);
+    Nmax[0]=stoi(input[37]);
+    Nmax[1]=stoi(input[38]);
+
+    
 
     L = bfactor * sigma;
 }

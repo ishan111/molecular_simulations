@@ -62,13 +62,13 @@ bool logging = 0;
 bool read_from_file = false;
 
 //TMMC parameters
-vector<vector<vector<double>>> tmmcC;//={{0,0,0,0,0,0,0,0,0}};
-vector<vector<vector<double>>> tmmcN;//={{0,0,0,0,0,0,0,0,0}};
+//vector<vector<vector<double>>> tmmcC;//={{0,0,0,0,0,0,0,0,0}};
+//vector<vector<vector<double>>> tmmcN;//={{0,0,0,0,0,0,0,0,0}};
 vector<int> Nmax={0,0};
 double tmmcRsum = 0 ;
 double bias = 0;
 bool inc = false ;
-vector<vector<vector<double>>> tmmcHist;// = {{0,0,0}};
+//vector<vector<vector<double>>> tmmcHist;// = {{0,0,0}};
 
 int tmmcCupstart = 15000;
 int tmmcNupstart=29000;
@@ -87,7 +87,9 @@ double bin_dimes[2][2][3];
 int transition = 0;
 int revTransition = 0;
 
-
+vector<vector<vector<double>>> tmmcC;
+vector<vector<vector<double>>> tmmcN;
+vector<vector<vector<double>>> tmmcHist;
 
 int biasStart;
 //Loop counter

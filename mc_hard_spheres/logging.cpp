@@ -7,6 +7,8 @@ ofstream N_samp;
 vector<int> npart;
 map<int,int> hgram;
 
+
+
 void log_init(){
     const time_t ctt = time(0);
     cout << "----BEGIN_LOG-----" << endl;
@@ -30,6 +32,27 @@ void log_init(){
     hgram_data.open("gcmc.hist"); //data for histogram
     energy_samp.open("energySamp.dat");
     N_samp.open("Nsamp.dat");
+
+    vector<vector<vector<double>>> tmmcC1(Nmax[0]+1,vector<vector<double>>(Nmax[1]+1,vector<double>(9,0)));
+    vector<vector<vector<double>>> tmmcN1(Nmax[0]+1,vector<vector<double>>(Nmax[1]+1,vector<double>(9,0)));
+    vector<vector<vector<double>>> tmmcHist1(Nmax[0]+1,vector<vector<double>>(Nmax[1]+1,vector<double>(3,0)));
+
+    tmmcC=tmmcC1;
+    tmmcN = tmmcN1;
+    tmmcHist = tmmcHist1;
+
+
+    for (int i=0;i<=Nmax[0];i+=1){
+      for (int j=0;j<=Nmax[1];j+=1){
+        tmmcN[i][j][0] = i;
+        tmmcN[i][j][1] = j;
+        tmmcC[i][j][0] = i;
+        tmmcC[i][j][1] = j;
+        tmmcHist[i][j][0] = i;
+        tmmcHist[i][j][1] = j;
+      }
+    }
+
   }
 
   void log_current_config(int move_type){
@@ -60,6 +83,7 @@ void log_init(){
       config_log << endl;
       energy_samp << sampEnergy << endl ;
       N_samp << N << endl ;
+
     }
 
     npart.push_back(N);

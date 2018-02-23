@@ -46,11 +46,11 @@ void collect(){
         }
 
     cout << "Finished reading. Updated particle list with " << particles.size() << " particles." << endl;
-    
+
 
   //tm initialize maybe
 
-  tmmcN.reserve(Nmax[0]+1);
+  /*tmmcN.reserve(Nmax[0]+1);
   tmmcC.reserve(Nmax[0]+1);
   tmmcHist.reserve(Nmax[0]+1);
   for (int i=0;i<=Nmax[0];i+=1){
@@ -62,17 +62,10 @@ void collect(){
       tmmcC[i][j].reserve(9);
       tmmcHist[i][j].reserve(3);
     }
-  }
-  for (int i=0;i<=Nmax[0];i+=1){
-    for (int j=0;j<=Nmax[1];j+=1){
-      tmmcN[i][j][0] = i;
-      tmmcN[i][j][1] = j;
-      tmmcC[i][j][0] = i;
-      tmmcC[i][j][1] = j;
-      tmmcHist[i][j][0] = i;
-      tmmcHist[i][j][1] = j;
-    }
-  }
+  }*/
+
+
+
 
     state_file.close();
 
