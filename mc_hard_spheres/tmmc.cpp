@@ -25,8 +25,8 @@ void tmmc_update(double accProb){
 
 	accProbExp = exp(accProb);
 	accProbExp = accProbExp<1?accProbExp:1;
-	tmmcC[Ninit[1]][Ninit[2]][transition] = tmmcC[Ninit[1]][Ninit[2]][transition] + accProbExp ;
-	tmmcC[Ninit[1]][Ninit[2]][8] = tmmcC[Ninit[1]][Ninit[2]][8] + 1  ;
+	tmmcC[Ninit[0]][Ninit[1]][transition] = tmmcC[Ninit[0]][Ninit[1]][transition] + accProbExp ;
+	tmmcC[Ninit[0]][Ninit[1]][8] = tmmcC[Ninit[0]][Ninit[1]][8] + 1  ;
 
 
 
@@ -55,8 +55,8 @@ double tmmc_bias(){
 
 
 
-	if(tmmcN[Nfin[1]][Nfin[2]][revTransition] > 0 && tmmcN[Ninit[1]][Ninit[2]][transition] > 0 ) {
-		bias = log(tmmcN[Nfin[1]][Nfin[2]][revTransition])-log(tmmcN[Ninit[1]][Ninit[2]][transition]);
+	if(tmmcN[Nfin[0]][Nfin[1]][revTransition] > 0 && tmmcN[Ninit[0]][Ninit[1]][transition] > 0 ) {
+		bias = log(tmmcN[Nfin[0]][Nfin[1]][revTransition])-log(tmmcN[Ninit[0]][Ninit[1]][transition]);
 		//bias = -bias ;
 	}
 
@@ -208,7 +208,7 @@ bool is_in_bin(int binNo, vector<double> particle){
 		else if (Nfin[0]-Ninit[0] == 1 && Nfin[1]-Ninit[1] == -1){
 			transition = 6; revTransition = 7 ;
 		}
-		else if (Nfin[0]-Ninit[1] == -1 && Nfin[1]-Ninit[2] == 1){
+		else if (Nfin[0]-Ninit[0] == -1 && Nfin[1]-Ninit[1] == 1){
 			transition = 7; revTransition = 6 ;
 		}
 	}

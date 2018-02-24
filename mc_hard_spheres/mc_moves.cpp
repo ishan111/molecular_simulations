@@ -109,8 +109,8 @@ else{ //remove
       N-=1;
       sampEnergy = sampEnergy + e_new ;
       succ_del += 1;
-      Ninit = Nfin;
-
+      Ninit[0] = Nfin[0];
+      Ninit[1] = Nfin[1];
     }
     log_current_config(3);
   }
