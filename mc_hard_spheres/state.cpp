@@ -51,8 +51,10 @@ void collect(){
         tmmcC[0][0]=tmRow[0];
       //  tmmcN.push_back({(double) i,0,0,0});
       }
-      else*/ if (i>0) {
+      else*/
         tmmcC_file >> tmRow[0] >> tmRow[1] >> tmRow[2] >> tmRow[3];
+      if (i>0) {
+
         tmmcC.push_back(tmRow);
         tmmcN.push_back({(double) i,0,0,0});
       }

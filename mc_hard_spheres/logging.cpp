@@ -58,10 +58,10 @@ void log_init(){
       }
       config_log << "[[ No. of particles = " << N << " ]]" << endl;
       config_log << endl;
-      energy_samp << sampEnergy << endl ;
-      N_samp << N << endl ;
 
     }
+    energy_samp << sampEnergy << endl ;
+    N_samp << N << endl ;
 
     npart.push_back(N);
     if (sampleNo%1000==0 ){
