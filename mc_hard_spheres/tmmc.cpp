@@ -14,20 +14,21 @@ ofstream tmmcHist_dataC;
 ofstream tmmcHist_dataN;
 
 void tmmc_update(double accProb){
-	if (sampleNo> tmmcCupstart && transition != 0){
-		double accProbExp=accProb;
+	if (sampleNo> tmmcCupstart{
+		if (transition){
+			double accProbExp=accProb;
 
-		/*if( Nmax<N+1){
-		Nmax=N+1;
-		tmmcC.push_back({(double) Nmax,0,0,0});
-		tmmcN.push_back({(double) Nmax,0,0,0});
-	}*/
+			/*if( Nmax<N+1){
+			Nmax=N+1;
+			tmmcC.push_back({(double) Nmax,0,0,0});
+			tmmcN.push_back({(double) Nmax,0,0,0});
+		}*/
 
-	accProbExp = exp(accProb);
-	accProbExp = accProbExp<1?accProbExp:1;
-	tmmcC[Ninit[0]][Ninit[1]][transition] = tmmcC[Ninit[0]][Ninit[1]][transition] + accProbExp ;
-	tmmcC[Ninit[0]][Ninit[1]][8] = tmmcC[Ninit[0]][Ninit[1]][8] + 1  ;
-
+		accProbExp = exp(accProb);
+		accProbExp = accProbExp<1?accProbExp:1;
+		tmmcC[Ninit[0]][Ninit[1]][transition] = tmmcC[Ninit[0]][Ninit[1]][transition] + accProbExp ;
+		tmmcC[Ninit[0]][Ninit[1]][8] = tmmcC[Ninit[0]][Ninit[1]][8] + 1  ;
+	}
 
 
 
